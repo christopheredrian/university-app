@@ -97,8 +97,8 @@
         }
 
         /*
-        * Appends a person from form to the inside list
-        */
+         * Appends a person from form to the inside list
+         */
         function addPerson() {
             var fn = fullName.value;
             var cat = category.value;
@@ -112,6 +112,7 @@
             };
             var item = createItem(fn, cat, i)
             insideList.append(item);
+            sync();
         }
 
         /**
@@ -128,11 +129,29 @@
         }
 
         /*
-        * syncs current inside and outside objects to local storage
-        */
-        function sync(){
-            
+         * syncs current inside and outside objects to local storage
+         */
+        function sync() {
+            localStorage.setItem('inside', JSON.stringify(inside));
+            localStorage.setItem('outside', JSON.stringify(outside));
         }
+
+        /**
+         * This function will be called upon loading the page
+         */
+        function init() {
+            inside = JSON.parse(localStorage.getItem('inside'));
+            alert();
+            for (var k in inside) {
+                if (inside.hasOwnProperty(k)) {
+                    // alert("Key is " + k + ", value is" + target[k]);
+                    var item = createItem(inside[k].fullName, inside[k].category , inside[k].id);
+                    insideList.append(item);
+                }
+            }
+            outside = JSON.parse(localStorage.getItem('outside'));
+        }
+        init();
     </script>
 </body>
 
