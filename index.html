@@ -3,11 +3,137 @@
 
 <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="css/grid.css">
+    <style>
+        .demo div {
+            border: 1px solid black;
+            height: 200px;
+        }
+
+        div.draggable {
+            height: 50px;
+            width: 100%;
+        }
+    </style>
 </head>
-<div class="container">
-    @ index.html
-</div>
+
 <body>
+
+    <div class="demo">
+
+        <div class="row">
+            <div class="column column-4">
+                <h2>Login</h2>
+                <label for="fullName">Name:</label>
+                <input id="fullName" type="text" name="fullName">
+
+                <label for="category">Category:</label>
+                <select name="category" id="category">
+                    <option value="Visitor">Visitor</option>
+                    <option value="Faculty">Faculty</option>
+                    <option value="Student">Student</option>
+                </select>
+                <label for="id">Id:</label>
+                <input type="text" name="id" id="id">
+                <button id="submitBtn">Submit</button>
+            </div>
+            <div class="column column-8">
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div id="insideList" class="column column-6" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <div class="draggable" draggable="true" ondragstart="drag(event)" id="drag1">
+                    This is the draggable div
+                </div>
+
+            </div>
+            <div class="column column-6" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <div class="draggable" draggable="true" ondragstart="drag(event)" id="drag2">
+                    This is the draggable di2
+                </div>
+            </div>
+        </div>
+
+
+        <div class="draggable" draggable="true" ondragstart="drag(event)" id="template">
+
+        </div>
+    </div>
+
+
+
+    <script>
+        // Global objects
+        var inside = {};
+        var outside = {};
+
+        // Drag and drop 
+        function allowDrop(ev) {
+            ev.preventDefault();
+        }
+
+        function drag(ev) {
+            ev.dataTransfer.setData("text", ev.target.id);
+        }
+
+        function drop(ev) {
+            ev.preventDefault();
+            var data = ev.dataTransfer.getData("text");
+            ev.target.appendChild(document.getElementById(data));
+        }
+
+        // Form Elements
+        var submitBtn = document.getElementById('submitBtn'),
+            fullName = document.getElementById('fullName'),
+            category = document.getElementById('category'),
+            id = document.getElementById('id');
+
+        var insideList = document.getElementById('insideList');
+
+        submitBtn.onclick = function (ev) {
+            addPerson();
+        }
+
+        /*
+        * Appends a person from form to the inside list
+        */
+        function addPerson() {
+            var fn = fullName.value;
+            var cat = category.value;
+            var i = id.value;
+            var date = Date.now();
+            inside[date] = {
+                fullName: fn,
+                category: cat,
+                id: id,
+                startTime: date
+            };
+            var item = createItem(fn, cat, i)
+            insideList.append(item);
+        }
+
+        /**
+         * This function creates a new list item using the template 
+         */
+        function createItem(name, category, id) {
+            var template = document.getElementById('template');
+            // var clone = cloneObject(template);
+            var clone = template.cloneNode();
+            clone.id = id;
+            clone.innerHTML = name + '<br>';
+            clone.innerHTML += category + '<br>';
+            return clone;
+        }
+
+        /*
+        * syncs current inside and outside objects to local storage
+        */
+        function sync(){
+            
+        }
+    </script>
 </body>
 
 </html>
