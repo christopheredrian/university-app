@@ -64,11 +64,11 @@
 
 
 
-    <script>
+    <script defer>
         // Global objects
         var inside = {};
         var outside = {};
-
+		var insideList = document.getElementById('insideList');
         // Drag and drop 
         function allowDrop(ev) {
             ev.preventDefault();
@@ -90,7 +90,7 @@
             category = document.getElementById('category'),
             id = document.getElementById('id');
 
-        var insideList = document.getElementById('insideList');
+        
 
         submitBtn.onclick = function (ev) {
             addPerson();
@@ -107,11 +107,11 @@
             inside[date] = {
                 fullName: fn,
                 category: cat,
-                id: id,
+                id: i,
                 startTime: date
             };
             var item = createItem(fn, cat, i)
-            insideList.append(item);
+            insideList.appendChild(item);
             sync();
         }
 
@@ -140,16 +140,16 @@
          * This function will be called upon loading the page
          */
         function init() {
-            inside = JSON.parse(localStorage.getItem('inside'));
+            inside = JSON.parse(localStorage.getItem('inside')) || {};
             alert();
             for (var k in inside) {
                 if (inside.hasOwnProperty(k)) {
                     // alert("Key is " + k + ", value is" + target[k]);
                     var item = createItem(inside[k].fullName, inside[k].category , inside[k].id);
-                    insideList.append(item);
+                    insideList.appendChild(item);
                 }
             }
-            outside = JSON.parse(localStorage.getItem('outside'));
+            outside = JSON.parse(localStorage.getItem('outside')) || {};
         }
         init();
     </script>
