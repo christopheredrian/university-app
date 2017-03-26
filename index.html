@@ -5,154 +5,205 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="css/grid.css">
     <style>
-        .demo div {
-            border: 1px solid black;
-            height: 200px;
+
+        html{
+            /*height: 400px;*/
+            height: 100vh;
+        }
+        .container {
+            width: 90%;
+            margin: 0 auto;
+            /*border: 1px solid black;*/
         }
 
+        .list{
+            overflow-y: auto;
+            height: 80vh;
+        }
         div.draggable {
-            height: 50px;
+            /*height: 50px;*/
             width: 100%;
+        }
+
+        #templateDiv {
+            /*height: 50px;*/
+            width: 100%;
+        }
+
+        .templateDiv img {
+            width: 100%;
+        }
+
+        .hidden {
+            /*visibility: hidden;*/
+            display:none;
+        }
+
+        .form {
+            border: 1px solid yellow;
+            border-radius: 10px;
         }
     </style>
 </head>
 
 <body>
 
-    <div class="demo">
+<div class="container">
 
-        <div class="row">
-            <div class="column column-4">
-                <h2>Login</h2>
-                <label for="fullName">Name:</label>
-                <input id="fullName" type="text" name="fullName">
+    <div class="row">
+        <div class="column column-4 form">
+            <h2>Sign Up</h2>
+            <input id="fullName" type="text" name="fullName" placeholder="Full Name">
 
-                <label for="category">Category:</label>
-                <select name="category" id="category">
-                    <option value="Visitor">Visitor</option>
-                    <option value="Faculty">Faculty</option>
-                    <option value="Student">Student</option>
-                </select>
-                <label for="id">Id:</label>
-                <input type="text" name="id" id="id">
-                <button id="submitBtn">Submit</button>
-            </div>
-            <div class="column column-8">
-
-            </div>
+            <label for="category">Category:</label>
+            <select name="category" id="category">
+                <option value="Invalid">Select Category...</option>
+                <option value="Visitor">Visitor</option>
+                <option value="Faculty">Faculty</option>
+                <option value="Student">Student</option>
+            </select>
+            <input type="text" name="id" id="idNumber" placeholder="Id Number">
+            <button id="submitBtn">Submit</button>
         </div>
-
-        <div class="row">
-            <div id="insideList" class="column column-6" ondrop="drop(event)" ondragover="allowDrop(event)">
-                <div class="draggable" draggable="true" ondragstart="drag(event)" id="drag1">
-                    This is the draggable div
-                </div>
-
-            </div>
-            <div class="column column-6" ondrop="drop(event)" ondragover="allowDrop(event)">
-                <div class="draggable" draggable="true" ondragstart="drag(event)" id="drag2">
-                    This is the draggable di2
-                </div>
-            </div>
-        </div>
-
-
-        <div class="draggable" draggable="true" ondragstart="drag(event)" id="template">
+        <div class="column column-8">
 
         </div>
     </div>
 
+    <div class="row">
+        <div id="insideList" class="list column column-6">
+            <div class="draggable" draggable="true" ondragstart="drag(event)" id="drag1">
+                This is the draggable div
+            </div>
+
+        </div>
+        <div id="outsideList" class="list column column-6" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <div class="draggable" draggable="true" ondragstart="drag(event)" id="drag2">
+                This is the draggable di2
+            </div>
+        </div>
+    </div>
 
 
-    <script defer>
-        // Global objects
-        var inside = {};
-        var outside = {};
-		var insideList = document.getElementById('insideList');
-        // Drag and drop 
-        function allowDrop(ev) {
-            ev.preventDefault();
-        }
+    <div class="templateDiv draggable row hidden" draggable="true" ondragstart="drag(event)" id="templateDiv">
+        <div class="column column-2">
+            <img src="img/person.png" alt="Person div">
+        </div>
+        <div class="column column-10">
+            <p>Name: <span class="name">Johhny Alfonso</span></p>
+            <p>Id Number: <span class="idNumber">2123123</span></p>
+            <p>Category: <span class="category">Visitor</span></p>
+            <p>Date Start: <span class="dateStart">June 5, 2017</span></p>
+            <button class="deleteBtn">Delete</button>
+            <button class="signOutBtn">Sign Out</button>
+        </div>
+    </div>
+    <div class="templateDiv draggable row hidden" draggable="true" ondragstart="drag(event)" id="templateDivSignOut">
+        <div class="column column-2">
+            <img src="img/person.png" alt="Person div">
+        </div>
+        <div class="column column-10">
+            <p>Name: <span class="name">Johhny Alfonso</span></p>
+            <p>Id Number: <span class="idNumber">2123123</span></p>
+            <p>Category: <span class="category">Visitor</span></p>
+            <p>Date Start: <span class="dateStart">June 5, 2017</span></p>
+            <p>Date End: <span class="dateEnd">June 7, 2017</span></p>
+            <button class="deleteBtn">Delete</button>
+        </div>
+    </div>
+</div>
 
-        function drag(ev) {
-            ev.dataTransfer.setData("text", ev.target.id);
-        }
 
-        function drop(ev) {
-            ev.preventDefault();
-            var data = ev.dataTransfer.getData("text");
-            ev.target.appendChild(document.getElementById(data));
-        }
+<!--<script defer>-->
+<!--// Global objects-->
+<!--var inside = {};-->
+<!--var outside = {};-->
+<!--var insideList = document.getElementById('insideList');-->
+<!--// Drag and drop -->
+<!--function allowDrop(ev) {-->
+<!--ev.preventDefault();-->
+<!--}-->
 
-        // Form Elements
-        var submitBtn = document.getElementById('submitBtn'),
-            fullName = document.getElementById('fullName'),
-            category = document.getElementById('category'),
-            id = document.getElementById('id');
+<!--function drag(ev) {-->
+<!--ev.dataTransfer.setData("text", ev.target.id);-->
+<!--}-->
 
-        
+<!--function drop(ev) {-->
+<!--ev.preventDefault();-->
+<!--var data = ev.dataTransfer.getData("text");-->
+<!--ev.target.appendChild(document.getElementById(data));-->
+<!--}-->
 
-        submitBtn.onclick = function (ev) {
-            addPerson();
-        }
+<!--// Form Elements-->
+<!--var submitBtn = document.getElementById('submitBtn'),-->
+<!--fullName = document.getElementById('fullName'),-->
+<!--category = document.getElementById('category'),-->
+<!--id = document.getElementById('id');-->
 
-        /*
-         * Appends a person from form to the inside list
-         */
-        function addPerson() {
-            var fn = fullName.value;
-            var cat = category.value;
-            var i = id.value;
-            var date = Date.now();
-            inside[date] = {
-                fullName: fn,
-                category: cat,
-                id: i,
-                startTime: date
-            };
-            var item = createItem(fn, cat, i)
-            insideList.appendChild(item);
-            sync();
-        }
+<!---->
 
-        /**
-         * This function creates a new list item using the template 
-         */
-        function createItem(name, category, id) {
-            var template = document.getElementById('template');
-            // var clone = cloneObject(template);
-            var clone = template.cloneNode();
-            clone.id = id;
-            clone.innerHTML = name + '<br>';
-            clone.innerHTML += category + '<br>';
-            return clone;
-        }
+<!--submitBtn.onclick = function (ev) {-->
+<!--addPerson();-->
+<!--}-->
 
-        /*
-         * syncs current inside and outside objects to local storage
-         */
-        function sync() {
-            localStorage.setItem('inside', JSON.stringify(inside));
-            localStorage.setItem('outside', JSON.stringify(outside));
-        }
+<!--/*-->
+<!--* Appends a person from form to the inside list-->
+<!--*/-->
+<!--function addPerson() {-->
+<!--var fn = fullName.value;-->
+<!--var cat = category.value;-->
+<!--var i = id.value;-->
+<!--var date = Date.now();-->
+<!--inside[date] = {-->
+<!--fullName: fn,-->
+<!--category: cat,-->
+<!--id: i,-->
+<!--startTime: date-->
+<!--};-->
+<!--var item = createItem(fn, cat, i)-->
+<!--insideList.appendChild(item);-->
+<!--sync();-->
+<!--}-->
 
-        /**
-         * This function will be called upon loading the page
-         */
-        function init() {
-            inside = JSON.parse(localStorage.getItem('inside')) || {};
-            alert();
-            for (var k in inside) {
-                if (inside.hasOwnProperty(k)) {
-                    // alert("Key is " + k + ", value is" + target[k]);
-                    var item = createItem(inside[k].fullName, inside[k].category , inside[k].id);
-                    insideList.appendChild(item);
-                }
-            }
-            outside = JSON.parse(localStorage.getItem('outside')) || {};
-        }
-        init();
-    </script>
+<!--/**-->
+<!--* This function creates a new list item using the template -->
+<!--*/-->
+<!--function createItem(name, category, id) {-->
+<!--var template = document.getElementById('template');-->
+<!--// var clone = cloneObject(template);-->
+<!--var clone = template.cloneNode();-->
+<!--clone.id = id;-->
+<!--clone.innerHTML = name + '<br>';-->
+<!--clone.innerHTML += category + '<br>';-->
+<!--return clone;-->
+<!--}-->
+
+<!--/*-->
+<!--* syncs current inside and outside objects to local storage-->
+<!--*/-->
+<!--function sync() {-->
+<!--localStorage.setItem('inside', JSON.stringify(inside));-->
+<!--localStorage.setItem('outside', JSON.stringify(outside));-->
+<!--}-->
+
+<!--/**-->
+<!--* This function will be called upon loading the page-->
+<!--*/-->
+<!--function init() {-->
+<!--inside = JSON.parse(localStorage.getItem('inside')) || {};-->
+<!--alert();-->
+<!--for (var k in inside) {-->
+<!--if (inside.hasOwnProperty(k)) {-->
+<!--// alert("Key is " + k + ", value is" + target[k]);-->
+<!--var item = createItem(inside[k].fullName, inside[k].category , inside[k].id);-->
+<!--insideList.appendChild(item);-->
+<!--}-->
+<!--}-->
+<!--outside = JSON.parse(localStorage.getItem('outside')) || {};-->
+<!--}-->
+<!--init();-->
+<!--</script>-->
+<script src="js/app.js"></script>
 </body>
 
 </html>
