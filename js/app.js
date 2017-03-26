@@ -96,7 +96,7 @@ var ApplicationView = {
 // Application Controller
 var ApplicationController = {
     init: function () {
-        PersonStorage.people = JSON.parse(localStorage.getItem('people'));
+        PersonStorage.people = JSON.parse(localStorage.getItem('people')) || {};
         for (var k in PersonStorage.people) {
             if (PersonStorage.people.hasOwnProperty(k)) {
                 var currentPerson = PersonStorage.people[k];
