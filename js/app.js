@@ -1,4 +1,11 @@
-// Create Person function
+/**
+ * Function for creating a person instance
+ * @param fullName
+ * @param idNumber
+ * @param category
+ * @param startTime
+ * @returns person object {{}}
+ */
 function createPerson(fullName, idNumber, category, startTime) {
     var person = {};
     person.id = startTime.getTime();
@@ -12,7 +19,10 @@ function createPerson(fullName, idNumber, category, startTime) {
 }
 
 
-// PersonStorage
+/**
+ * This is used for CRUD (Create, Read, Update and Delete) operations for the local storage
+ * @type object
+ */
 var PersonStorage = {
     // Static variables
     people: {},
@@ -41,7 +51,11 @@ var PersonStorage = {
     }
 };
 
-
+/**
+ * This object is in charge for HTML Behaviors
+ * @type {{getInputFormValues: ApplicationView.getInputFormValues, signIn: ApplicationView.signIn, clearInput: ApplicationView.clearInput,
+  * removePerson: ApplicationView.removePerson, signOut: ApplicationView.signOut}}
+ */
 var ApplicationView = {
     getInputFormValues: function () {
 
@@ -93,7 +107,13 @@ var ApplicationView = {
     }
 };
 
-// Application Controller
+/**
+ * This object is responsible for controlling the interactions of views and local storage, functions inside this
+ * namespace are also used for event handling
+ * @type {{init: ApplicationController.init, addPerson: ApplicationController.addPerson,
+ * removePerson: ApplicationController.removePerson, signOut: ApplicationController.signOut,
+ * generateReport: ApplicationController.generateReport, validateForm: ApplicationController.validateForm}}
+ */
 var ApplicationController = {
     init: function () {
         PersonStorage.people = JSON.parse(localStorage.getItem('people')) || {};
@@ -187,6 +207,6 @@ function drop(ev) {
 }
 
 
-// upon execution
+// These are executed upon finishing the page contents
 PersonStorage.getLocalStorage();
 ApplicationController.init();
