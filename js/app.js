@@ -126,8 +126,6 @@ var ApplicationController = {
         for (var k in PersonStorage.people) {
             if (PersonStorage.people.hasOwnProperty(k)) {
                 var currentPerson = PersonStorage.people[k];
-                console.log(currentPerson);
-
                 if (currentPerson.endTime === null) {
                     ApplicationView.signIn(currentPerson.name, currentPerson.idNumber,
                         currentPerson.category, new Date(currentPerson.startTime));
