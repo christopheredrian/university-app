@@ -54,7 +54,7 @@ var PersonStorage = {
 /**
  * This object is in charge for HTML Behaviors
  * @type {{getInputFormValues: ApplicationView.getInputFormValues, signIn: ApplicationView.signIn, clearInput: ApplicationView.clearInput,
-  * removePerson: ApplicationView.removePerson, signOut: ApplicationView.signOut}}
+ * removePerson: ApplicationView.removePerson, signOut: ApplicationView.signOut}}
  */
 var ApplicationView = {
     getInputFormValues: function () {
@@ -116,6 +116,12 @@ var ApplicationView = {
  */
 var ApplicationController = {
     init: function () {
+        // preventDefault on form 
+        document.querySelector('.mainForm').onsubmit = function(event){
+            event.preventDefault();
+        }
+
+        // Setting of data
         PersonStorage.people = JSON.parse(localStorage.getItem('people')) || {};
         for (var k in PersonStorage.people) {
             if (PersonStorage.people.hasOwnProperty(k)) {
@@ -131,8 +137,7 @@ var ApplicationController = {
             }
         }
 
-    }
-    ,
+    },
     addPerson: function () {
         var today = new Date();
         var fullNameVal = fullNameInput.value;
@@ -142,27 +147,21 @@ var ApplicationController = {
         ApplicationView.signIn(fullNameVal, idNumberVal, categoryVal, startTimeVal);
         ApplicationView.clearInput();
         PersonStorage.create(fullNameVal, idNumberVal, categoryVal, startTimeVal);
-    }
-    ,
+    },
     removePerson: function () {
         alert('Removing' + this.getAttribute('data-id'));
         PersonStorage.delete(this.getAttribute('data-id'));
         ApplicationView.removePerson(this.getAttribute('data-id'));
-    }
-    ,
+    },
     signOut: function () {
         var id = this.getAttribute('data-id');
         alert('Signing out ' + this.getAttribute('data-id'));
         ApplicationView.removePerson(id);
         ApplicationView.signOut(PersonStorage.people[id]);
         PersonStorage.signOut(this);
-    }
-    ,
-    generateReport: function () {
-    }
-    ,
-    validateForm: function () {
-    }
+    },
+    generateReport: function () {},
+    validateForm: function () {}
 };
 
 // Utility classes
@@ -203,7 +202,11 @@ function drag(ev) {
 function drop(ev) {
     ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
-    ev.target.appendChild(document.getElementById(data));
+    // ev.target.appendChild(document.getElementById(data));
+    var element = document.getElementById(data);
+    var signOutBtn = element.querySelector('.signOutBtn');
+    alert(signOutBtn);
+    signOutBtn.click();
 }
 
 
