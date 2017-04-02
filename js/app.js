@@ -123,7 +123,7 @@ var ApplicationController = {
                 console.log(currentPerson);
 
                 if (currentPerson.endTime === null) {
-                    ApplicationView.signIn(currentPerson.fullName, currentPerson.idNumber,
+                    ApplicationView.signIn(currentPerson.name, currentPerson.idNumber,
                         currentPerson.category, new Date(currentPerson.startTime));
                 } else {
                     ApplicationView.signOut(currentPerson);
