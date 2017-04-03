@@ -9,9 +9,9 @@
 
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
         <!-- Place favicon.ico in the root directory -->
-
+		<link rel="stylesheet" href="styles.css">
         <link rel="stylesheet" href="css/main.css">
-        <script src="#"></script>
+        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
     <body>
         <!--[if lt IE 8]>
@@ -19,17 +19,26 @@
         <![endif]-->
 
         <!-- Add your site or application content here -->
-        <form id="form_id" method="post" name="myform">
+        <form action="/action_page.php">
 
+			<div class="imgcontainer">
+			<img src="logo.jpg" alt="Logo" class="logo">
+			</div>
+			
             <div class="container">
-
-                    <label>User Name :</label>
-                    <input type="text" name="username" id="username"/>
+                    <label>Username :</label>
+                    <input type="text" placeholder="Enter Username" name="uname" required>
                     <label>Password :</label>
-                    <input type="password" name="password" id="password"/>
-                    <input type="button" value="Login" id="submit" onclick="validate()"/>
+                    <input type="password" placeholder="Enter Username" name="uname" required>
+                    <button type="submit">Login</button>
+    <input type="checkbox" checked="checked"> Remember me
 
             </div>
+			
+			<div class="container" style="background-color:#f1f1f1">
+    <button type="button" class="cancelbtn">Cancel</button>
+    <span class="psw">Forgot <a href="#">password?</a></span>
+  </div>
 
         </form>
     </body>
