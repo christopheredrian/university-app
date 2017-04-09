@@ -5,6 +5,11 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="css/grid.css">
     <link rel="stylesheet" href="css/f.css">
+<<<<<<< HEAD
+=======
+    <link rel="stylesheet" href="css/modal.css">
+</head>
+>>>>>>> 9599852e07ad7164e2084a3cdf067f9b69732d18
 
 <script type="text/javascript"> 
 function display_c(){
@@ -22,10 +27,38 @@ tt=display_c();
 
 
 
+<<<<<<< HEAD
 
 </head>
 
 <body onload=display_ct();>
+=======
+<!-- Trigger/Open The Modal -->
+<button id="myBtn">Reports</button>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close">&times;</span>
+            <h2>Report Generator</h2>
+        </div>
+        <div class="modal-body">
+            <label for="startDate">Start Date</label>
+            <input type="date" id="startDate">
+            <label for="endDate">End Date</label>
+            <input type="date" id="endDate">
+            <input type="submit" value="Download Report" id="generateBtn">
+        </div>
+        <div class="modal-footer">
+            <h3></h3>
+        </div>
+    </div>
+
+</div>
+>>>>>>> 9599852e07ad7164e2084a3cdf067f9b69732d18
 <div class="container">
 
     <div class="row column-7">
@@ -56,28 +89,28 @@ tt=display_c();
     <button>All</button>  <button>day</button>  <button>week</button>  <button>month</button>  <button>year</button>
     <div class="row">
         <div class="column column-6">
-        <h2>Inside</h2>
-        <label>Search: </label> <input type="search" onkeyup="searchDiv('insideList', this.value); "><br><br>
+            <h2>Inside</h2>
+            <label>Search: </label> <input type="search" onkeyup="searchDiv('insideList', this.value); "><br><br>
 
-        <div id="insideList" class="list ">
-            
+            <div id="insideList" class="list ">
 
-            <!--<div class="draggable" draggable="true" ondragstart="drag(event)" id="drag1">-->
-            <!--This is the draggable div-->
-            <!--</div>-->
-        </div>
+
+                <!--<div class="draggable" draggable="true" ondragstart="drag(event)" id="drag1">-->
+                <!--This is the draggable div-->
+                <!--</div>-->
+            </div>
 
         </div>
         <div class="column column-6">
-        <h2>Signed Out</h2>
-        <label>Search: </label> <input type="search" onkeyup="searchDiv('outsideList', this.value); "><br><br>
-        
-        <div id="outsideList" class="list" ondrop="drop(event)" ondragover="allowDrop(event)">
-            
-            <!--<div class="draggable" draggable="true" ondragstart="drag(event)" id="drag2">-->
-            <!--This is the draggable di2-->
-            <!--</div>-->
-        </div>
+            <h2>Signed Out</h2>
+            <label>Search: </label> <input type="search" onkeyup="searchDiv('outsideList', this.value); "><br><br>
+
+            <div id="outsideList" class="list" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+                <!--<div class="draggable" draggable="true" ondragstart="drag(event)" id="drag2">-->
+                <!--This is the draggable di2-->
+                <!--</div>-->
+            </div>
 
         </div>
     </div>
