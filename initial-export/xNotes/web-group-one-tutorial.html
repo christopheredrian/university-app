@@ -1,0 +1,109 @@
+<html>
+    <head></head>
+    <body>
+        
+<h1>Notes on project</h1>
+<h2>Reading files</h2>
+<p>
+    Documentation: <a href="https://www.javascripture.com/FileReader">javascripture.com</a>
+</p>
+<input type='file' accept='text/plain' onchange='openFile(event)'><br>
+<pre id='output'></pre>
+<script>
+  var openFile = function(event) {
+    var input = event.target;
+
+    var reader = new FileReader();
+    reader.onload = function(){
+      var text = reader.result;
+    //   console.log(reader.result.substring(0, 200));
+    document.getElementById("output").innerText = text;
+      
+    };
+    reader.readAsText(input.files[0]);
+  };
+</script>
+
+<hr>
+<h2>Writing/Downloading files</h2>
+<p>Documentation: <a href="http://stackoverflow.com/questions/3665115/create-a-file-in-memory-for-user-to-download-not-through-server">
+stackoverflow.com
+</a></p>
+<p>Data URIs Documentation <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs">developer.mozilla.org</a>
+</p>
+<style>
+form * {
+  display: block;
+  margin: 10px;
+}
+</style>
+
+
+<form onsubmit="download(this['name'].value, this['text'].value)">
+  <input type="text" name="name" value="test.txt">
+  <textarea name="text"></textarea>
+  <input type="submit" value="Download">
+</form>
+
+<script>
+    function download(filename, text) {
+  var element = document.createElement('a');
+  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+  element.setAttribute('download', filename);
+
+  element.style.display = 'none';
+  document.body.appendChild(element);
+
+  element.click();
+
+  document.body.removeChild(element);
+}
+</script>
+
+<hr>
+<style>
+#div1, #div2 {
+    float: left;
+    width: 160px;
+    height: 125px;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid black;
+}
+</style>
+<script>
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    ev.target.appendChild(document.getElementById(data));
+}
+</script>
+<div>
+    <h2>Drag and Drop</h2>
+    <p>Later on use the <strong>id number</strong> for setting the <em>id attribute</em> of draggable elements </p>
+    <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+    <li draggable="true" ondragstart="drag(event)" id="drag1" width="88" height="31">item 1</li>
+    <li draggable="true" ondragstart="drag(event)" id="drag2" width="88" height="31">item 2</li>
+    </div>
+
+    <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <li draggable="true" ondragstart="drag(event)" id="drag3" width="88" height="31">item 3</li>
+        <li draggable="true" ondragstart="drag(event)" id="drag4" width="88" height="31">item 4</li>
+    </div>
+
+    <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)">
+    </div>
+</div>
+
+
+
+    </body>
+</html>
