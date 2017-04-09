@@ -5,11 +5,29 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="css/grid.css">
     <link rel="stylesheet" href="css/f.css">
+
+<script type="text/javascript"> 
+function display_c(){
+var refresh=1000; // Refresh rate in milli seconds
+mytime=setTimeout('display_ct()',refresh)
+}
+
+function display_ct() {
+var strcount
+var x = new Date()
+document.getElementById('ct').innerHTML = x;
+tt=display_c();
+}
+</script>
+
+
+
+
 </head>
 
-<body>
-
+<body onload=display_ct();>
 <div class="container">
+
     <div class="row column-7">
 
         <div class="column column-4 form">
@@ -32,8 +50,10 @@
 
         </div>
     </div>
+    <span id='ct' ></span>
     <br>
     <br>
+    <button>All</button>  <button>day</button>  <button>week</button>  <button>month</button>  <button>year</button>
     <div class="row">
         <div class="column column-6">
         <h2>Inside</h2>
