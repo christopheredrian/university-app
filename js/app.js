@@ -13,7 +13,7 @@ function createPerson(fullName, idNumber, category, startTime) {
     person.idNumber = idNumber;
     person.name = fullName;
     person.category = category;
-    person.startTime = startTime;
+    person.startTime = startTime.getTime();
     person.endTime = null;
     return person;
 }
@@ -91,7 +91,12 @@ var ApplicationView = {
         // outsideListDiv.appendChild(div);
         // append to sign out
         var startTime = new Date(currentPerson.startTime);
-        var endTime = new Date();
+        var endTime;
+        if (currentPerson.endTime) {
+            endTime = new Date(currentPerson.endTime);
+        } else {
+            endTime = new Date();
+        }
         var clone = templateDivSignOut.cloneNode(true);
         clone.id = startTime.getTime();
         removeClass(clone, 'hidden');
@@ -117,7 +122,7 @@ var ApplicationView = {
 var ApplicationController = {
     init: function () {
         // preventDefault on form 
-        document.querySelector('.mainForm').onsubmit = function(event){
+        document.querySelector('.mainForm').onsubmit = function (event) {
             event.preventDefault();
         }
 
@@ -158,8 +163,10 @@ var ApplicationController = {
         ApplicationView.signOut(PersonStorage.people[id]);
         PersonStorage.signOut(this);
     },
-    generateReport: function () {},
-    validateForm: function () {}
+    generateReport: function () {
+    },
+    validateForm: function () {
+    }
 };
 
 // Utility classes

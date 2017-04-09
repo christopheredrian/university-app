@@ -4,7 +4,7 @@
  * @param text - text to search for
  */
 function searchDiv(id, text) {
-
+    text = text.toLowerCase();
     var insideDiv = document.getElementById(id);
     var listItems = document.querySelectorAll("#" + id + ' > div');
     listItems.forEach(function (listItem) {
@@ -14,8 +14,8 @@ function searchDiv(id, text) {
 
         }
 
-        var name = listItem.querySelector('.name').innerText;
-        var id = listItem.querySelector('.idNumber').innerText;
+        var name = listItem.querySelector('.name').innerText.toLowerCase();
+        var id = listItem.querySelector('.idNumber').innerText.toLowerCase();
         // Display if matches
         if ((name.match(text) || id.match(text)) && !isEmpty(text)) {
             listItem.style = "display: block";
