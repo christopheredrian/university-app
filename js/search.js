@@ -4,25 +4,33 @@
  * @param text - text to search for
  */
 function searchDiv(id, text) {
-    /**
-     * Helper function for determining if text is empty
-     * @param text - text to test
-     */
-    function isEmpty(text) {
-        return text == '';
-    }
+
     var insideDiv = document.getElementById(id);
     var listItems = document.querySelectorAll("#" + id + ' > div');
     listItems.forEach(function (listItem) {
+        if(text == "" || text == null){
+            listItem.style = "display: block";
+            return false;
+
+        }
+
         var name = listItem.querySelector('.name').innerText;
         var id = listItem.querySelector('.idNumber').innerText;
         // Display if matches
         if ((name.match(text) || id.match(text)) && !isEmpty(text)) {
-            listItem.style = "";
+            listItem.style = "display: block";
             return false;
         } else {
             listItem.style = "display:none";
             return true;
         }
     });
+}
+
+/**
+ * Helper function for determining if text is empty
+ * @param text - text to test
+ */
+function isEmpty(text) {
+    return text == '';
 }
