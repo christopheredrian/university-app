@@ -4,59 +4,18 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="css/grid.css">
-    <style>
-        html {
-            /*height: 400px;*/
-            height: 100vh;
-        }
-
-        .container {
-            width: 90%;
-            margin: 0 auto;
-            /*border: 1px solid black;*/
-        }
-
-        .list {
-            overflow-y: auto;
-            height: 80vh;
-        }
-
-        div.draggable {
-            /*height: 50px;*/
-            width: 100%;
-        }
-
-        #templateDiv {
-            /*height: 50px;*/
-            width: 100%;
-        }
-
-        .templateDiv img {
-            width: 100%;
-        }
-
-        .hidden {
-            /*visibility: hidden;*/
-            display: none;
-        }
-
-        .form {
-            border: 1px solid black;
-            border-radius: 10px;
-            padding: 10px;
-        }
-    </style>
+    <link rel="stylesheet" href="css/f.css">
 </head>
 
 <body>
 
 <div class="container">
+    <div class="row column-7">
 
-    <div class="row">
         <div class="column column-4 form">
             <h2>Sign Up</h2>
             <form action="#" class="mainForm">
-                <input id="fullName" type="text" name="fullName" placeholder="Full Name">
+                <label>Full Name: </label><input id="fullName" type="text" name="fullName" placeholder="Allen Bautista"><br><br>
 
                 <label for="category">Category:</label>
                 <select name="category" id="category">
@@ -64,8 +23,8 @@
                     <option value="Visitor">Visitor</option>
                     <option value="Faculty">Faculty</option>
                     <option value="Student">Student</option>
-                </select>
-                <input type="text" name="id" id="idNumber" placeholder="Id Number">
+                </select><br><br>
+                <label>ID number: </label><input type="text" name="id" id="idNumber" placeholder="Id Number"><br><br>
                 <button id="submitBtn">Submit</button>
             </form>
         </div>
@@ -73,30 +32,38 @@
 
         </div>
     </div>
-
+    <br>
+    <br>
     <div class="row">
-        <div id="insideList" class="list column column-6">
-            <h2>Inside</h2>
-            Search <input type="search" onkeyup="searchDiv('insideList', this.value); ">
+        <div class="column column-6">
+        <h2>Inside</h2>
+        <label>Search: </label> <input type="search" onkeyup="searchDiv('insideList', this.value); "><br><br>
+
+        <div id="insideList" class="list ">
+            
 
             <!--<div class="draggable" draggable="true" ondragstart="drag(event)" id="drag1">-->
             <!--This is the draggable div-->
             <!--</div>-->
+        </div>
 
         </div>
-        <div id="outsideList" class="list column column-6" ondrop="drop(event)" ondragover="allowDrop(event)">
-            <h2>Signed Out</h2>
-            Search <input type="search" onkeyup="searchDiv('outsideList', this.value);">
-
+        <div class="column column-6">
+        <h2>Signed Out</h2>
+        <label>Search: </label> <input type="search" onkeyup="searchDiv('insideList', this.value); "><br><br>
+        
+        <div id="outsideList" class="list" ondrop="drop(event)" ondragover="allowDrop(event)">
+            
             <!--<div class="draggable" draggable="true" ondragstart="drag(event)" id="drag2">-->
             <!--This is the draggable di2-->
             <!--</div>-->
         </div>
-    </div>
 
+        </div>
+    </div>
     <div class="templateDiv draggable row hidden" draggable="true" ondragstart="drag(event)" id="templateDiv">
 
-        <div class="column column-12">
+        <div class="column column-12" id="InputOutput">
             <p>Name: <span class="name">Johhny Alfonso</span><br> Id Number: <span class="idNumber">2123123</span><br>
                 Category:
                 <span class="category">Visitor</span><br> Date Start: <span class="dateStart">June 5, 2017</span></p>
@@ -107,7 +74,7 @@
     </div>
 
     <div class="templateDiv draggable row hidden" draggable="true" ondragstart="drag(event)" id="templateDivSignOut">
-        <div class="column column-12">
+        <div class="column column-12" id="InputOutput">
             <p>Name: <span class="name">Johhny Alfonso</span><br> Id Number: <span class="idNumber">2123123</span><br>
                 Category:
                 <span class="category">Visitor</span><br> Date Start: <span class="dateStart">June 5, 2017</span><br>
