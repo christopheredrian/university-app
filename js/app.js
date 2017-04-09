@@ -218,3 +218,16 @@ function drop(ev) {
 // These are executed upon finishing the page contents
 PersonStorage.getLocalStorage();
 ApplicationController.init();
+
+// initialize timer
+function display_c() {
+    var refresh = 1000; // Refresh rate in milli seconds
+    mytime = setTimeout('display_ct()', refresh)
+}
+
+function display_ct() {
+    var strcount
+    var x = new Date()
+    document.getElementById('currentTime').innerHTML = x;
+    tt = display_c();
+}
