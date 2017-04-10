@@ -1,7 +1,7 @@
 html {
     /*height: 400px;*/
     height: 100vh;
-    background-color: #f0f0d0;
+    background-color: #d5ecef;
 }
 
 .container {
@@ -37,32 +37,32 @@ div.draggable {
 .form {
     border: 3px solid;
     border-radius: 10px;
-    border-color: #708090;
+    border-color: #FFCC00;
     padding: 10px;
     width: 80%;
-    background-color: #D3D3D3;
+    background-image: url("../img/bg.jpg");
 }
 
 #insideList {
     border-radius: 12px;
     border-style: solid;
-    border-color: #708090;
+    border-color: #FFCC00;
     padding: 2%;
-    background-color: #D3D3D3;
+    background-image: url("../img/bg.jpg");
 }
 
 #outsideList {
     border-radius: 12px;
     border-style: solid;
-    border-color: #708090;
+    border-color: #FFCC00;
     padding: 2%;
-    background-color: #D3D3D3;
+    background-image: url("../img/bg.jpg");
 }
 
 #InputOutput {
     border-radius: 25px;
     border-style: solid;
-    border-color: #666644;
+    border-color: #FFCC00;
     padding-left: 2%;
     padding-top: 2%;
     padding-bottom: 2%;
@@ -71,17 +71,23 @@ div.draggable {
     margin-bottom: 2%;
     margin-top: 2%;
     width: 95%;
-    background-color: #f0f0d0;
+    background-color: #d5ecef;
 }
 
 .deleteBtn {
     background-color: #DC4821;
     color: white;
     border-radius: 12px;
-    padding: 10px 24px;
+    padding: 2%;
     font-size: 15px;
 }
-
+.signOutBtn{
+    background-color: #DC4821;
+    color: white;
+    border-radius: 12px;
+    padding: 2%;
+    font-size: 15px;
+}
 #submitBtn {
     background-color: #449d44;
     color: white;
@@ -113,7 +119,7 @@ div.draggable {
 }
 
 h2 {
-    color: #2F4F4F;
+    color: #348296;
 
 }
 
@@ -127,4 +133,10 @@ select {
 
 span#currentTime{
     font-size: 2em;
+}
+label{
+    color:#09489B;
+}
+body{
+    /*background-image: url("../img/bg.jpg");*/
 }
