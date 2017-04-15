@@ -89,7 +89,7 @@ input[type=date] {
     box-sizing: border-box;
 }
 
-#generateBtn {
+#viewBtn {
     width: 100%;
     background-color: #4CAF50;
     border: none;

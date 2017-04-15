@@ -1,0 +1,104 @@
+body{
+    margin: 10% 0;
+}
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    font-size: 15px;
+}
+
+th, td {
+    padding: 10px;
+}
+
+th {
+    text-align: center;
+    cursor: pointer;
+}
+
+.btn-group button {
+    background-color: #4CAF50; /* Green background */
+    border: 1px solid green; /* Green border */
+    color: white; /* White text */
+    padding: 10px 24px; /* Some padding */
+    cursor: pointer; /* Pointer/hand icon */
+    float: left; /* Float the buttons side by side */
+}
+
+.btn-group button:not(:last-child) {
+    border-right: none; /* Prevent double borders */
+}
+
+/* Clear floats (clearfix hack) */
+.btn-group:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* Add a background color on hover */
+.btn-group button:hover {
+    background-color: #3e8e41;
+}
+
+#reportsTable {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#reportsTable td, #reportsTable th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#reportsTable tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#reportsTable tr:hover {
+    background-color: #ddd;
+}
+
+#reportsTable th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}
+
+.page-header {
+    border-bottom: 1px solid grey;
+}
+
+table#statistics td, table#statistics th, table#statistics {
+    border: none;
+    border-bottom: 1px solid gray;
+}
+
+table#statistics {
+    margin-bottom: 5%;
+}
+table#statistics th{
+    text-align: left;
+}
+td[class$=legend] {
+    width: 50px;
+}
+
+td.faculty-legend {
+    background-color: red;
+}
+
+td.students-legend {
+    background-color: green;
+}
+
+td.visitors-legend {
+    background-color: blue;
+}
+
+.chart{
+    text-align: center;
+}

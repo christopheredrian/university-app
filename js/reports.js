@@ -2,18 +2,38 @@
  * Created by chris on 4/9/2017.
  */
 
+// We are on reports.html
+if (document.getElementById('downloadBtn')) {
+    var downloadBtn = document.getElementById('downloadBtn');
+    downloadBtn.onclick = function (e) {
+        alert('not yet implemented');
+        var startDate = new Date(localStorage.getItem('startDate'));
+        var endDate = new Date(localStorage.getItem('endDate'));
+        createReport(JSON.parse(localStorage.getItem('people')), startDate.getTime(), endDate.getTime(), 'reports.csv');
+    }
+
+    document.getElementById('printBtn').onclick = function () {
+        print();
+    }
+
+    document.getElementById('generateBtn').onclick = function(){
+        document.getElementById('reportsBtn').click();
+    }
+    viewReport(localStorage.getItem('people'), document.getElementById('reportsTable'));
+}
 
 // Get the modal
 var modal = document.getElementById('myModal');
 
 // Get the button that opens the modal
-var btn = document.getElementById("myBtn");
+var btn = document.getElementById("reportsBtn");
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks the button, open the modal
-btn.onclick = function () {
+btn.onclick = function (e) {
+    e.preventDefault();
     modal.style.display = "block";
 }
 
@@ -31,6 +51,7 @@ window.onclick = function (event) {
 
 
 /**
+ * This creates the CSV report
  * @param people people object from local storage
  * @param startTime time in milliseconds
  * @param endtime  time in milliseconds
@@ -78,7 +99,7 @@ function createReport(people, startTime, endtime, fileName) {
         link.setAttribute("download", fileName);
         document.body.appendChild(link); // Required for FF
 
-        link.click(); // This will download the data file named "my_data.csv".
+        link.click();
     }
     console.log(rows);
 
@@ -94,12 +115,158 @@ function encloseWithQuotation(text) {
     return '"' + text + '"';
 }
 
-document.getElementById('generateBtn').onclick = function (event) {
+document.getElementById('viewBtn').onclick = function (event) {
     var startDate = new Date(document.getElementById('startDate').value);
     var endDate = new Date(document.getElementById('endDate').value);
-    createReport(PersonStorage.people, startDate.getTime(), endDate.getTime(), 'reports.csv');
-    // console.log(new Date(startDate.value) + ' ' + );
+    // createReport(PersonStorage.people, startDate.getTime(), endDate.getTime(), 'reports.csv');
+    localStorage.setItem('startDate', startDate);
+    localStorage.setItem('endDate', endDate);
+    window.location.hostname = "reports.html";
+    var temp = window.location.toString().split('/');
+    // temp[temp.length - 1] = "reports.html";
+    console.log(temp[temp.length - 1]);
+    temp[temp.length - 1] = 'reports.html';
+    temp = temp.join('/');
+    window.location.replace(temp);
 };
 
 
+function viewReport(people, tableElement) {
+    var peopleCounter = 0,
+        visitorCounter = 0,
+        studentCounter = 0,
+        facultyCounter = 0;
+    var startTime = new Date(localStorage.getItem('startDate'));
+    var endtime = new Date(localStorage.getItem('endDate'));
+    people = JSON.parse(people);
+    console.log("table: " + tableElement);
+    for (var id in people) {
+        var current = people[id];
+        console.log(current.startTime);
+        if (isInBetween(current.startTime, startTime, endtime) &&
+            isInBetween(current.endTime, startTime, endtime)) {
+            peopleCounter++;
+            switch (current.category) {
+                case 'Visitor':
+                    visitorCounter++;
+                    break;
+                case 'Student':
+                    studentCounter++;
+                    break;
+                case 'Faculty':
+                    facultyCounter++;
+                    break;
+            }
+            var startObj = new Date(current.startTime);
+            var endObj = new Date(current.endTime);
+            var row = document.createElement('tr');
+
+            var temp = document.createElement('td');
+            temp.innerHTML = current['name'];
+            row.appendChild(temp);
+            temp = document.createElement('td');
+            temp.innerHTML = current['idNumber'];
+            row.appendChild(temp);
+            temp = document.createElement('td');
+            temp.innerHTML = current['category'];
+            row.appendChild(temp);
+            temp = document.createElement('td');
+            temp.innerHTML = startObj;
+            row.appendChild(temp);
+            temp = document.createElement('td');
+            temp.innerHTML = endObj;
+            row.appendChild(temp);
+            tableElement.appendChild(row);
+        } else {
+            console.log('e linub view reports');
+        }
+    }
+    document.querySelector('#statistics td#facultyCounter').innerText = facultyCounter;
+    document.querySelector('#statistics td#studentsCounter').innerText = studentCounter;
+    document.querySelector('#statistics td#visitorsCounter').innerText = visitorCounter;
+    document.querySelector('#statistics td#peopleCounter').innerText = peopleCounter;
+
+    var canvas = document.getElementById("can");
+    var ctx = canvas.getContext("2d");
+    var lastend = 0;
+    var data = [visitorCounter, facultyCounter, studentCounter]; // If you add more data values make sure you add more colors
+    var myTotal = 0; // Automatically calculated so don't touch
+    var myColor = ['red', 'green', 'blue']; // Colors of each slice
+
+    for (var e = 0; e < data.length; e++) {
+        myTotal += data[e];
+    }
+
+    for (var i = 0; i < data.length; i++) {
+        ctx.fillStyle = myColor[i];
+        ctx.beginPath();
+        ctx.moveTo(canvas.width / 2, canvas.height / 2);
+        // Arc Parameters: x, y, radius, startingAngle (radians), endingAngle (radians), antiClockwise (boolean)
+        ctx.arc(canvas.width / 2, canvas.height / 2, canvas.height / 2, lastend, lastend + (Math.PI * 2 * (data[i] / myTotal)), false);
+        ctx.lineTo(canvas.width / 2, canvas.height / 2);
+        ctx.fill();
+        lastend += Math.PI * 2 * (data[i] / myTotal);
+    }
+
+
+}
+
+/**
+ * This is for sorting tables
+ * @param n column index to sort
+ */
+function sortTable(n) {
+    var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+    table = document.getElementById("reportsTable");
+    switching = true;
+    //Set the sorting direction to ascending:
+    dir = "asc";
+    /*Make a loop that will continue until
+     no switching has been done:*/
+    while (switching) {
+        //start by saying: no switching is done:
+        switching = false;
+        rows = table.getElementsByTagName("TR");
+        /*Loop through all table rows (except the
+         first, which contains table headers):*/
+        for (i = 1; i < (rows.length - 1); i++) {
+            //start by saying there should be no switching:
+            shouldSwitch = false;
+            /*Get the two elements you want to compare,
+             one from current row and one from the next:*/
+            x = rows[i].getElementsByTagName("TD")[n];
+            y = rows[i + 1].getElementsByTagName("TD")[n];
+            /*check if the two rows should switch place,
+             based on the direction, asc or desc:*/
+            if (dir == "asc") {
+                if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                    //if so, mark as a switch and break the loop:
+                    shouldSwitch = true;
+                    break;
+                }
+            } else if (dir == "desc") {
+                if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                    //if so, mark as a switch and break the loop:
+                    shouldSwitch = true;
+                    break;
+                }
+            }
+        }
+        if (shouldSwitch) {
+            /*If a switch has been marked, make the switch
+             and mark that a switch has been done:*/
+            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+            switching = true;
+            //Each time a switch is done, increase this count by 1:
+            switchcount++;
+        } else {
+            /*If no switching has been done AND the direction is "asc",
+             set the direction to "desc" and run the while loop again.*/
+            if (switchcount == 0 && dir == "asc") {
+                dir = "desc";
+                switching = true;
+            }
+        }
+    }
+}
 
