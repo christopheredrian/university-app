@@ -3,14 +3,29 @@
 
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0">
     <link rel="stylesheet" href="css/grid.css">
-    <link rel="stylesheet" href="css/f.css">
+    <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/modal.css">
-</head>
 
+</head>
+<header>
+
+<nav>
+    <ul>
+      <li><a class="active" href="#home">Home</a></li>
+      <li><a href="#form">Form</a></li>
+      <li><a href="#Inside">Inside</a></li>
+      <li><a href="#Outside">Outside</a></li>
+      <li><a href="#Backup">Backup</a></li>
+      <li><a href="#Restore">Restore</a></li>    
+      <li><a href="#reports.html">Reports</a></li>
+    </ul>
+</nav>
+</header>
 <body onload="display_ct();">
 
-
+<br><br><br><br>
 <!-- The Modal -->
 <div id="myModal" class="modal">
 
@@ -44,8 +59,8 @@
     </header>
     <div class="row">
 
-        <div class="column column-5">
-            <div class="form">
+        <div class="column column-5" >
+            <div class="form" >
                 <h2>Sign Up</h2>
                 <form action="#" class="mainForm">
                     <label>Full Name: </label><input id="fullName" type="text" name="fullName"
@@ -59,7 +74,7 @@
                         <option value="Student">Student</option>
                     </select><br><br>
                     <label>ID number: </label><input type="text" name="id" id="idNumber"
-                                                     placeholder="Id Number"><br><br>
+                                                     placeholder="ID Number"><br><br>
                     <button id="submitBtn">Submit</button>
                 </form>
             </div>
@@ -81,7 +96,7 @@
     <div class="row">
         <div class="column column-6">
             <h2>Inside</h2>
-            <label>Search: </label> <input type="search" onkeyup="searchDiv('insideList', this.value); "><br><br>
+            <label>Search: </label> <input type="search" onkeyup="searchDiv('insideList', this.value); " placeholder="Search"><br><br>
 
             <div id="insideList" class="list ">
 
@@ -94,7 +109,7 @@
         </div>
         <div class="column column-6">
             <h2>Signed Out</h2>
-            <label>Search: </label> <input type="search" onkeyup="searchDiv('outsideList', this.value); "><br><br>
+            <label>Search: </label> <input type="search" onkeyup="searchDiv('outsideList', this.value); " placeholder="Search"><br><br>
 
             <div id="outsideList" class="list" ondrop="drop(event)" ondragover="allowDrop(event)">
 
