@@ -52,9 +52,6 @@ th {
     padding: 8px;
 }
 
-#reportsTable tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
 
 #reportsTable tr:hover {
     background-color: #ddd;
@@ -64,8 +61,8 @@ th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
-    background-color: #4CAF50;
-    color: white;
+    background-color: #e3f2fd;
+    color: black;
 }
 
 .page-header {
@@ -88,15 +85,15 @@ td[class$=legend] {
 }
 
 td.faculty-legend {
-    background-color: red;
+    background-color: #ff5252;
 }
 
 td.students-legend {
-    background-color: green;
+    background-color: #4caf50;
 }
 
 td.visitors-legend {
-    background-color: blue;
+    background-color: #e3f2fd;
 }
 
 .chart{
