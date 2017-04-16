@@ -2,6 +2,17 @@
  * Created by chris on 4/9/2017.
  */
 
+/**
+ * Utility for adding days to a specific date
+ * @param days
+ * @returns {Date}
+ */
+Date.prototype.addDays = function (days) {
+    var dat = new Date(this.valueOf());
+    dat.setDate(dat.getDate() + days);
+    return dat;
+}
+
 // We are on reports.html
 if (document.getElementById('downloadBtn')) {
     var downloadBtn = document.getElementById('downloadBtn');
@@ -59,8 +70,10 @@ window.onclick = function (event) {
  */
 function createReport(people, startTime, endtime, fileName) {
     var rows = [];
-    console.log(people);
+    console.log(endtime);
     rows.push(["Name", "Id Number", "Category", "Date", "Start Time", "End Time"]);
+    endtime = endtime.addDays(1);
+    console.log(endtime);
     for (var id in people) {
         var currentRow = [];
         if (isInBetween(people[id]['startTime'], startTime, endtime) &&
@@ -77,7 +90,6 @@ function createReport(people, startTime, endtime, fileName) {
             rows.push(currentRow);
             alert(true);
         } else {
-            console.log('e linub');
         }
         console.log('--------------------');
         // if (currentRow.length > 0) {
@@ -106,8 +118,8 @@ function createReport(people, startTime, endtime, fileName) {
 }
 
 function isInBetween(date, start, end) {
-    console.log(date + " " + start + " " + end);
-    console.log(date >= start && date <= end);
+    // console.log(date + " " + start + " " + end);
+    // console.log(date >= start && date <= end);
     return (date >= start && date <= end);
 }
 
@@ -124,7 +136,6 @@ document.getElementById('viewBtn').onclick = function (event) {
     window.location.hostname = "reports.html";
     var temp = window.location.toString().split('/');
     // temp[temp.length - 1] = "reports.html";
-    console.log(temp[temp.length - 1]);
     temp[temp.length - 1] = 'reports.html';
     temp = temp.join('/');
     window.location.replace(temp);
@@ -138,11 +149,10 @@ function viewReport(people, tableElement) {
         facultyCounter = 0;
     var startTime = new Date(localStorage.getItem('startDate'));
     var endtime = new Date(localStorage.getItem('endDate'));
+    endtime = endtime.addDays(1);
     people = JSON.parse(people);
-    console.log("table: " + tableElement);
     for (var id in people) {
         var current = people[id];
-        console.log(current.startTime);
         if (isInBetween(current.startTime, startTime, endtime) &&
             isInBetween(current.endTime, startTime, endtime)) {
             peopleCounter++;
@@ -186,7 +196,6 @@ function viewReport(people, tableElement) {
             row.appendChild(temp);
             tableElement.appendChild(row);
         } else {
-            console.log('e linub view reports');
         }
     }
     document.querySelector('#statistics td#facultyCounter').innerText = facultyCounter;
@@ -251,8 +260,6 @@ function sortTable(n) {
                     }
                 }
             } else {
-                console.log(x.innerHTML + ":" + y.innerHTML);
-
                 if (dir == "asc") {
                     if (parseInt(x.innerHTML) > parseInt(y.innerHTML)) {
                         shouldSwitch = true;

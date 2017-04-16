@@ -73,6 +73,10 @@
     width: 100%;
 }
 
+.sm-show{
+    display: none;
+}
+
 /* Media queries for columns */
 
 @media only screen and (max-width: 500px) {
@@ -102,5 +106,9 @@
 
     .sm-hidden{
         display: none;
+    }
+
+    .sm-show{
+        display: inline;
     }
 }

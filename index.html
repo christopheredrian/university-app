@@ -7,14 +7,16 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/modal.css">
     <link rel="stylesheet" href="css/grid.css">
+    <style>
 
+    </style>
 </head>
 <header>
     <nav>
         <a class="active" href="index.html">Home</a>
-        <a href="#form">Form</a>
-        <a href="#Inside">Inside</a>
-        <a href="#Outside">Outside</a>
+        <a class="sm-show" href="#form">Form</a>
+        <a class="sm-show" href="#Inside">Inside</a>
+        <a class="sm-show" href="#Outside">Outside</a>
         <a href="" id="exportBtn">Backup</a>
         <a href="" id="importBtn">Restore</a>
         <a href="reports.html" id="reportsBtn">Reports</a>
@@ -111,7 +113,7 @@
             <div class="column column-6">
                 <h2>Signed Out</h2>
                 <label>Search: </label>
-                <input  type="search" onkeyup="searchDiv('outsideList', this.value); " placeholder="Search">
+                <input type="search" onkeyup="searchDiv('outsideList', this.value); " placeholder="Search">
                 <div id="outsideList" class="list" ondrop="drop(event)" ondragover="allowDrop(event)">
                 </div>
 
@@ -125,7 +127,6 @@
                     Category:
                     <span class="category">Visitor</span><br> Date Start: <span class="dateStart">June 5, 2017</span>
                 </p>
-                <br>
                 <button class="deleteBtn">Delete</button>
                 <button class="signOutBtn">Sign Out</button>
             </div>
@@ -151,23 +152,7 @@
 <script src="js/reports.js"></script>
 <script src="js/export.js"></script>
 <script src="js/import.js"></script>
-<script>
-    // prototype for time buttons
-    document.getElementById('dayBtn').onclick = function () {
-        alert("day");
-    };
-    document.getElementById('weekBtn').onclick = function () {
-        alert("week");
-    };
-    document.getElementById('monthBtn').onclick = function () {
-        alert("month");
-    };
-    document.getElementById('yearbtn').onclick = function () {
-        alert("year");
-    };
 
-
-</script>
 </body>
 
 </html>
