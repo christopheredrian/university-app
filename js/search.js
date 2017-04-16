@@ -8,7 +8,7 @@ function searchDiv(id, text) {
     var insideDiv = document.getElementById(id);
     var listItems = document.querySelectorAll("#" + id + ' > div');
     listItems.forEach(function (listItem) {
-        if(text == "" || text == null){
+        if (text == "" || text == null) {
             listItem.style = "display: block";
             return false;
 
@@ -33,4 +33,32 @@ function searchDiv(id, text) {
  */
 function isEmpty(text) {
     return text == '';
+}
+
+/**
+ * Searches the table for specified query
+ * @param id table id
+ * @param text query
+ */
+function searchTable(id, text) {
+    text = text.toLowerCase();
+    // #reportsTable
+    var listItems = document.querySelectorAll("#" + id + ' tr:not(:first-child)');
+    listItems.forEach(function (listItem) {
+        if (text == "" || text == null) {
+            listItem.style = "display: in-line";
+            return false;
+        }
+        console.log(listItem)
+        // Display if matches
+        if ((listItem.innerText.toLowerCase().match(text) && !isEmpty(text))) {
+            console.log(listItem.innerText)
+            listItem.style = "display: in-line";
+            return false;
+        } else {
+            listItem.style = "display: none";
+            return true;
+        }
+    });
+
 }

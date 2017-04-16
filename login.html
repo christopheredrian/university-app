@@ -10,8 +10,8 @@
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
         <!-- Place favicon.ico in the root directory -->
 		<link rel="stylesheet" href="styles.css">
-        <link rel="stylesheet" href="css/main.css">
-        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+        <link rel="stylesheet" href="css/login.css">
+           <link rel="stylesheet" href="css/main.css">
     </head>
     <body>
         <!--[if lt IE 8]>
@@ -19,27 +19,49 @@
         <![endif]-->
 
         <!-- Add your site or application content here -->
-        <form action="/action_page.php">
 
-			<div class="imgcontainer">
-			<img src="logo.jpg" alt="Logo" class="logo">
-			</div>
-			
-            <div class="container">
-                    <label>Username :</label>
-                    <input type="text" placeholder="Enter Username" name="uname" required>
-                    <label>Password :</label>
-                    <input type="password" placeholder="Enter Username" name="uname" required>
-                    <button type="submit">Login</button>
-    <input type="checkbox" checked="checked"> Remember me
-
+    <img src="./img/logo.jpg" alt="Logo" class="logo">
+    <div class=" login">
+                <form action="" class="login-wrapper">
+                <h2>Log in</h2>
+            <div class="username">
+                <br>
+                <label><strong>Username</strong></label>
+                <br>
+                <input id="username" type="text" name="uname" required>
             </div>
-			
-			<div class="container" style="background-color:#f1f1f1">
-    <button type="button" class="cancelbtn">Cancel</button>
-    <span class="psw">Forgot <a href="#">password?</a></span>
-  </div>
-
+            <div class="password">
+                <label><strong>Password</strong></label>
+                <br>
+                <input id="password" type="password" name="passwd" required> 
+            </div>
+           <div class="lgnbtns">
+            <br>
+            <br>
+             <button id="submit" onclick="check(this.form)">Login</button>
+           </div>
+         
         </form>
+    </div>   
+    <div class="footer">
+        <p> <strong> All Rights Reserved || 2017 ©</strong></p>
+    </footer>
+        <script language="javascript">
+            function check(form) { 
+                var users = {
+                    "user1" : "user1",
+                    "user2" : "user2",
+                    "user3" : "user3"
+                };
+                
+                if(users[form.uname.value] !== undefined && users[form.uname.value] === form.password.value){
+                    window.open('index.html')
+                }
+                else {
+                    alert("Error Password or Username")
+                    window.location.reload();
+                }
+            }
+        </script>
     </body>
 </html>

@@ -1,37 +1,52 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" manifest="manifest.appcache" type="text/cache-manifest">
 
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="css/grid.css">
-    <link rel="stylesheet" href="css/f.css">
+    <meta name="viewport" content="initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="css/grid.css">
+    <style>
+
+    </style>
 </head>
-
+<header>
+    <nav>
+        <a class="active" href="index.html">Home</a>
+        <a class="sm-show" href="#mainform">Form</a>
+        <a class="sm-show" href="#insideLists">Inside</a>
+        <a class="sm-show" href="#outsideLists">Outside</a>
+        <a href="" id="exportBtn">Backup</a>
+        <a href="" id="importBtn">Restore</a>
+        <a href="reports.html" id="reportsBtn">Reports</a>
+        <a href="Login.html" class="logout">Log Out</a>
+    </nav>
+</header>
 <body onload="display_ct();">
+<div id="main">
 
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
 
-<!-- The Modal -->
-<div id="myModal" class="modal">
-
-    <!-- Modal content -->
-    <div class="modal-content">
-        <div class="modal-header">
-            <span class="close">&times;</span>
-            <h2>Report Generator</h2>
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <h2>Report Generator</h2>
+            </div>
+            <div class="modal-body">
+                <label for="startDate">Start Date</label>
+                <input type="date" id="startDate">
+                <label for="endDate">End Date</label>
+                <input type="date" id="endDate">
+                <input type="submit" value="View" id="viewBtn">
+            </div>
+            <div class="modal-footer">
+            </div>
         </div>
-        <div class="modal-body">
-            <label for="startDate">Start Date</label>
-            <input type="date" id="startDate">
-            <label for="endDate">End Date</label>
-            <input type="date" id="endDate">
-            <input type="submit" value="Download Report" id="generateBtn">
-        </div>
-        <div class="modal-footer">
-            <h3></h3>
-        </div>
-    </div>
 
+<<<<<<< HEAD
 </div>
 <div class="container">
     <!-- Trigger/Open The Modal -->
@@ -62,94 +77,112 @@
                                                      placeholder="Id Number"><br><br>
                     <button id="submitBtn">Submit</button>
                 </form>
+=======
+    </div>
+    <div class="container">
+        <!-- Trigger/Open The Modal -->
+        <!--<header>-->
+        <!--<nav class="row">-->
+        <!--&lt;!&ndash;<button id="myBtn">Reports</button>&ndash;&gt;-->
+        <!--<button id="exportBtn">Export</button>-->
+        <input style="visibility: hidden" type="file" id="importOrig" accept=".json" style="display:block"/>
+        <!--</nav>-->
+        <!--</header>-->
+
+        <div class="row full-height" id="mainform">
+
+            <div class="column column-4">
+                <h1>SLU Museum Logbook</h1>
+                <img src="./img/SLUlogo.jpg" alt="Logo" id="SLUlogo" class="sm-hidden">
+                <p class="clock">
+                    <span id='currentTime' class="sm-hidden"></span>
+                </p>
+>>>>>>> 44dc6762675a1e4d77fed32ec71f24e688f71170
+            </div>
+            <div class="column column-8">
+                <div class="form">
+                    <h2>Sign Up</h2>
+                    <form action="#" class="mainForm">
+                        <label>Full Name: </label><input id="fullName" type="text" name="fullName"
+                                                         placeholder="Please Enter Full Name"><br><br>
+
+                        <label for="category">Category:</label>
+                        <select name="category" id="category">
+                            <option value="Invalid">Select Category...</option>
+                            <option value="Visitor">Visitor</option>
+                            <option value="Faculty">Faculty</option>
+                            <option value="Student">Student</option>
+                        </select><br><br>
+                        <label>ID number: </label><input type="text" name="id" id="idNumber"
+                                                         placeholder="ID Number"><br><br>
+                        <button id="submitBtn">Submit</button>
+                    </form>
+                </div>
+            </div>
+                    <div id="insideLists"></div>
+        </div>
+
+        <div class="row containers" >
+            <!--<div class="btn-group">-->
+            <!--<button id="allBtn">All</button>-->
+            <!--<button id="dayBtn">day</button>-->
+            <!--<button id="weekBtn">week</button>-->
+            <!--<button id="monthBtn">month</button>-->
+            <!--<button id="yearbtn">year</button>-->
+            <!--</div>-->
+
+            <div class="column column-6" >
+                <h2>Inside</h2>
+                <label>Search: </label>
+                <input type="search" onkeyup="searchDiv('insideList', this.value); " placeholder="Search">
+
+                <div id="insideList" class="list ">
+                </div>
+
+            </div>
+            <div class="column column-6" id="outsideLists">
+                <h2>Signed Out</h2>
+                <label>Search: </label>
+                <input type="search" onkeyup="searchDiv('outsideList', this.value); " placeholder="Search">
+                <div id="outsideList" class="list" ondrop="drop(event)" ondragover="allowDrop(event)">
+                </div>
+
             </div>
         </div>
-        <div class="column column-7">
-            <p>
-                <span id='currentTime'></span>
-            </p>
-        </div>
-    </div>
+        <div class="templateDiv draggable row hidden" draggable="true" ondragstart="drag(event)" id="templateDiv">
 
-    <br>
-    <br>
-    <button id="allBtn">All</button>
-    <button id="dayBtn">day</button>
-    <button id="weekBtn">week</button>
-    <button id="monthBtn">month</button>
-    <button id="yearbtn">year</button>
-    <div class="row">
-        <div class="column column-6">
-            <h2>Inside</h2>
-            <label>Search: </label> <input type="search" onkeyup="searchDiv('insideList', this.value); "><br><br>
-
-            <div id="insideList" class="list ">
-
-
-                <!--<div class="draggable" draggable="true" ondragstart="drag(event)" id="drag1">-->
-                <!--This is the draggable div-->
-                <!--</div>-->
+            <div class="column column-12" id="InputOutput">
+                <p>Name: <span class="name">Johhny Alfonso</span><br> Id Number: <span
+                        class="idNumber">2123123</span><br>
+                    Category:
+                    <span class="category">Visitor</span><br> Date Start: <span class="dateStart">June 5, 2017</span>
+                </p>
+                <button class="deleteBtn">Delete</button>
+                <button class="signOutBtn">Sign Out</button>
             </div>
-
         </div>
-        <div class="column column-6">
-            <h2>Signed Out</h2>
-            <label>Search: </label> <input type="search" onkeyup="searchDiv('outsideList', this.value); "><br><br>
 
-            <div id="outsideList" class="list" ondrop="drop(event)" ondragover="allowDrop(event)">
-
-                <!--<div class="draggable" draggable="true" ondragstart="drag(event)" id="drag2">-->
-                <!--This is the draggable di2-->
-                <!--</div>-->
+        <div class="templateDiv draggable row hidden" draggable="true" ondragstart="drag(event)"
+             id="templateDivSignOut">
+            <div class="column column-12" id="InputOutput">
+                <p>Name: <span class="name">Johhny Alfonso</span><br> Id Number: <span
+                        class="idNumber">2123123</span><br>
+                    Category:
+                    <span class="category">Visitor</span><br> Date Start: <span
+                            class="dateStart">June 5, 2017</span><br>
+                    Date End: <span class="dateEnd">June 7, 2017</span></p>
+                <button class="deleteBtn">Delete</button>
             </div>
-
-        </div>
-    </div>
-    <div class="templateDiv draggable row hidden" draggable="true" ondragstart="drag(event)" id="templateDiv">
-
-        <div class="column column-12" id="InputOutput">
-            <p>Name: <span class="name">Johhny Alfonso</span><br> Id Number: <span class="idNumber">2123123</span><br>
-                Category:
-                <span class="category">Visitor</span><br> Date Start: <span class="dateStart">June 5, 2017</span></p>
-            <br>
-            <button class="deleteBtn">Delete</button>
-            <button class="signOutBtn">Sign Out</button>
         </div>
     </div>
 
-    <div class="templateDiv draggable row hidden" draggable="true" ondragstart="drag(event)" id="templateDivSignOut">
-        <div class="column column-12" id="InputOutput">
-            <p>Name: <span class="name">Johhny Alfonso</span><br> Id Number: <span class="idNumber">2123123</span><br>
-                Category:
-                <span class="category">Visitor</span><br> Date Start: <span class="dateStart">June 5, 2017</span><br>
-                Date End: <span class="dateEnd">June 7, 2017</span></p>
-            <button class="deleteBtn">Delete</button>
-        </div>
-    </div>
 </div>
-
 <script src="js/app.js"></script>
 <script src="js/search.js"></script>
 <script src="js/reports.js"></script>
 <script src="js/export.js"></script>
-<script src="js/export.js"></script>
-<script>
-    // prototype for time buttons
-    document.getElementById('dayBtn').onclick = function () {
-        alert("day");
-    };
-    document.getElementById('weekBtn').onclick = function () {
-        alert("week");
-    };
-    document.getElementById('monthBtn').onclick = function () {
-        alert("month");
-    };
-    document.getElementById('yearbtn').onclick = function () {
-        alert("year");
-    };
+<script src="js/import.js"></script>
 
-
-</script>
 </body>
 
 </html>

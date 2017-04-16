@@ -68,17 +68,19 @@
 
 .modal-header {
     padding: 2px 16px;
-    background-color: #5cb85c;
+    background-color: #e3f2fd;
     color: white;
 }
 
 .modal-body {
     padding: 2px 16px;
+    margin: 5% auto;
+    width: 60%;
 }
 
 .modal-footer {
     padding: 2px 16px;
-    background-color: #5cb85c;
+    background-color: #e3f2fd;
     color: white;
 }
 
@@ -88,14 +90,13 @@ input[type=date] {
     margin: 8px 0;
     box-sizing: border-box;
 }
-
-#generateBtn {
-    width: 100%;
+#viewBtn {
+    width:100%;
     background-color: #4CAF50;
     border: none;
     color: white;
     padding: 16px 32px;
     text-decoration: none;
-    margin: 4px 2px;
+    /*margin: 4px 2px;*/
     cursor: pointer;
 }

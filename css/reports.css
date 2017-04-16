@@ -1,0 +1,92 @@
+body {
+    margin: 10% 0;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    font-size: 15px;
+}
+
+th, td {
+    padding: 10px;
+}
+
+th {
+    text-align: center;
+    cursor: pointer;
+}
+
+#reportsTable {
+    font-family: "Segoe UI", "Open Sans", sans-serif, serif;
+    border-collapse: collapse;
+    width: 100%;
+
+}
+
+#reportsTable td, #reportsTable th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#reportsTable tr:hover {
+    background-color: #ddd;
+}
+
+#reportsTable th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #e3f2fd;
+    color:#348296;
+}
+
+.page-header {
+    border-bottom: 1px solid grey;
+}
+
+table#statistics td, table#statistics th, table#statistics {
+    border: none;
+    border-bottom: 1px solid gray;
+}
+
+table#statistics {
+    margin-bottom: 5%;
+}
+
+table#statistics th {
+    text-align: left;
+}
+
+td[class$=legend] {
+    width: 50px;
+}
+
+td.faculty-legend {
+    background-color: #ff5252;
+}
+
+td.students-legend {
+    background-color: #00e676;
+}
+
+td.visitors-legend {
+    background-color: #e3f2fd;
+}
+
+th{
+    min-width: 25px;
+}
+
+.chart {
+    text-align: center;
+}
+
+img.icon {
+    width: 10px;
+}
+
+div.icons {
+    width: 100%;
+    display: block;
+}

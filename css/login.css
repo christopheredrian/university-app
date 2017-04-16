@@ -1,0 +1,154 @@
+html {
+    /*height: 400px;*/
+    height: 100vh;
+  /*  background-color: #d5ecef;*/
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+
+
+    /*border: 1px solid black;*/
+}
+
+.list {
+    overflow-y: auto;
+    height: 80vh;
+}
+
+div.draggable {
+    /*height: 50px;*/
+    width: 100%;
+
+}
+
+#templateDiv {
+    /*height: 50px;*/
+    width: 100%;
+
+}
+
+.templateDiv img {
+    width: 100%;
+}
+
+.hidden {
+    /*visibility: hidden;*/
+    display: none;
+}
+
+.Fwrapper{
+    text-align: left;
+    margin: 15px;
+    box-sizing:  border-box;
+
+}
+.mainForm > select{
+    margin-left: 2%;
+    width: 60%;
+}
+.mainForm > label {
+    margin-right: 5%;
+}
+
+.datesWrapper{
+    width: 100%;
+}
+
+.datesWrapper > button{
+    width: 15%;
+    margin-left: 4%;
+    text-transform: capitalize;
+}
+
+.wrapper > h1{
+
+   text-align: center;
+}
+
+.wrapper{
+
+     margin: 8%;
+}
+
+.wrapper > button{
+    font-size: 1em;
+    width: 30%;
+    background-color:#2297bd;
+    color: #ffffff;
+    box-shadow: none;
+    margin-top: 2%;
+}
+
+
+table{
+    width:100%;
+
+}
+
+table, th, td {
+    border: 1px solid  #348296;
+    border-collapse: collapse;
+    font-size: 15px;
+}
+th, td {
+    padding: 10px;
+}
+th {
+    text-align: center;
+}
+
+.login{
+    background-color:#e3f2fd;
+    border: 1px solid #0072c6;
+    width: 30%;
+    height: 50%;
+    position: absolute;
+    left: 35%;
+    top: 30%;
+    padding: 2%;
+
+
+}
+
+.login-wrapper{
+    margin-top: 5%;
+    color: #0072c6;
+}
+.username,.password{
+    font-family: "Segoe UI", "Open Sans", sans-serif, serif;
+}
+
+
+#submit {
+    background: #4CAF50;
+    color: white;
+    border-color: #60a917;
+    padding: 0 1rem;
+    height: 2.125rem;
+    border: 1px #d9d9d9 solid;
+    cursor: pointer;
+    font-size: .875rem;
+    margin: .15625rem 0;
+    margin-left: 40%;
+    margin-top: -20%
+}
+
+#submit:hover {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+.footer{
+    background-color: #0072c6;
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    height: 30px;
+    width: 100%;
+    color: #e3f2fd;
+    text-align: center;
+    font-size: 13px;
+    font-family: "Segoe UI", "Open Sans", sans-serif, serif;
+}
