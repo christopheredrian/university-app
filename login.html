@@ -47,20 +47,18 @@
         <p> <strong> All Rights Reserved || 2017 ©</strong></p>
     </footer>
         <script language="javascript">
-            function check(form) { /*function to check userid & password*/
-                /*the following code checkes whether the entered userid and password are matching*/
+            function check(form) { 
                 var users = {
                     "user1" : "user1",
                     "user2" : "user2",
                     "user3" : "user3"
                 };
                 
-                // form.uname.value == form.passwd.value
                 if(users[form.uname.value] !== undefined && users[form.uname.value] === form.password.value){
-                    window.open('index.html')/*opens the target page while Id & password matches*/
+                    window.open('index.html')
                 }
                 else {
-                    alert("Error Password or Username")/*displays error message*/
+                    alert("Error Password or Username")
                     window.location.reload();
                 }
             }
