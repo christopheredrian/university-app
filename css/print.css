@@ -3,7 +3,12 @@
         display: none;
     }
 
-    body{
+    body {
         -webkit-print-color-adjust: exact;
+    }
+
+    @page {
+        size: auto;   /* auto is the initial value */
+        margin: 0mm;  /* this affects the margin in the printer settings */
     }
 }
