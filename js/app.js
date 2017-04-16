@@ -81,7 +81,7 @@ var ApplicationView = {
     },
     clearInput: function () {
         idNumberInput.value = "";
-        categoryInput.value = "Invalid";
+        categoryInput.value = "Visitor";
         fullNameInput.value = "";
     },
     removePerson: function (id) {
@@ -142,14 +142,18 @@ var ApplicationController = {
 
     },
     addPerson: function () {
-        var today = new Date();
-        var fullNameVal = fullNameInput.value;
-        var idNumberVal = idNumberInput.value;
-        var categoryVal = categoryInput.value;
-        var startTimeVal = today;
-        ApplicationView.signIn(fullNameVal, idNumberVal, categoryVal, startTimeVal);
-        ApplicationView.clearInput();
-        PersonStorage.create(fullNameVal, idNumberVal, categoryVal, startTimeVal);
+        if(formValid()){
+			var today = new Date();
+			var fullNameVal = fullNameInput.value;
+			var idNumberVal = idNumberInput.value;
+			var categoryVal = categoryInput.value;
+			var startTimeVal = today;
+			ApplicationView.signIn(fullNameVal, idNumberVal, categoryVal, startTimeVal);
+			ApplicationView.clearInput();
+			PersonStorage.create(fullNameVal, idNumberVal, categoryVal, startTimeVal);
+		} else{
+			alert('Invalid Input!');
+		}
     },
     removePerson: function () {
         PersonStorage.delete(this.getAttribute('data-id'));
@@ -228,4 +232,8 @@ function display_ct() {
     // document.getElementById('currentTime').innerHTML = x;
     document.getElementById('currentTime').innerHTML = x.toDateString() + "<br>" + x.toLocaleTimeString();
     tt = display_c();
+}
+
+function formValid(){
+	return document.getElementById('fullName').value != "" && document.getElementById('idNumber').value != "";
 }
