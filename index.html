@@ -47,16 +47,16 @@
         <div class="column column-5">
             <div class="form">
                 <h2>Sign Up</h2>
-                <form action="#" class="mainForm">
+                <form action="#" name="signup" class="mainForm">
                     <label>Full Name: </label><input id="fullName" type="text" name="fullName"
-                                                     placeholder="Allen Bautista"><br><br>
+                                                     placeholder="Juan Dela Cruz" required><br><br>
 
                     <label for="category">Category:</label>
-                    <select name="category" id="category">
+                    <select name="category" id="category" required>
                         <option value="Invalid">Select Category...</option>
-                        <option value="Visitor">Visitor</option>
-                        <option value="Faculty">Faculty</option>
-                        <option value="Student">Student</option>
+                        <option value="Visitor" id="Visitor">Visitor</option>
+                        <option value="Faculty" id="Faculty">Faculty</option>
+                        <option value="Student" id="Student">Student</option>
                     </select><br><br>
                     <label>ID number: </label><input type="text" name="id" id="idNumber"
                                                      placeholder="Id Number"><br><br>
