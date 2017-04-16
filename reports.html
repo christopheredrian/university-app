@@ -92,6 +92,7 @@
     </div>
     <div class="row" style="overflow: auto">
         <h2 class="page-header">Report</h2>
+        <label>Search: </label> <input type="search" onkeyup="searchTable('reportsTable', this.value); " placeholder="Search"><br><br>
         <table id="reportsTable">
             <tr>
                 <th onclick="sortTable(0)">Name</th>
@@ -107,5 +108,6 @@
 
 
 <script src="js/reports.js"></script>
+<script src="js/search.js"></script>
 </body>
 </html>
