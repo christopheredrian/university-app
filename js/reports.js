@@ -73,7 +73,6 @@ function createReport(people, startTime, endtime, fileName) {
     console.log(endtime);
     rows.push(["Name", "Id Number", "Category", "Date", "Start Time", "End Time"]);
     endtime = new Date(endtime);
-    endtime = endtime.addDays(1);
     endtime = endtime.getTime();
     console.log(endtime);
     for (var id in people) {
@@ -130,9 +129,10 @@ function encloseWithQuotation(text) {
 }
 
 document.getElementById('viewBtn').onclick = function (event) {
-    var startDate = new Date(document.getElementById('startDate').value);
-    var endDate = new Date(document.getElementById('endDate').value);
+    var startDate = new Date(document.getElementById('startDate').value + ':00:00:00');
+    var endDate = new Date(document.getElementById('endDate').value + ':00:00:00');
     // createReport(PersonStorage.people, startDate.getTime(), endDate.getTime(), 'reports.csv');
+    endDate = endDate.addDays(1);
     localStorage.setItem('startDate', startDate);
     localStorage.setItem('endDate', endDate);
     window.location.hostname = "reports.html";
@@ -151,7 +151,6 @@ function viewReport(people, tableElement) {
         facultyCounter = 0;
     var startTime = new Date(localStorage.getItem('startDate'));
     var endtime = new Date(localStorage.getItem('endDate'));
-    endtime = endtime.addDays(1);
     people = JSON.parse(people);
     for (var id in people) {
         var current = people[id];
