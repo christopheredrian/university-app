@@ -50,14 +50,14 @@ div.draggable {
 }
 
 #insideList {
-    border: 2px dashed;
+    border: 2px solid;
     border-color: #0072c6;
     padding: 2%;
     background-color: #e3f2fd;
 }
 
 #outsideList {
-    border: 2px dashed;
+    border: 2px solid;
     border-color: #0072c6;
     padding: 2%;
     background-color: #e3f2fd;
@@ -260,6 +260,15 @@ input[type=text], select {
     border-radius: 4px;
     box-sizing: border-box;
 }
+input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
 
 label {
     font-family: "Segoe UI", "Open Sans", sans-serif, serif;
@@ -268,7 +277,8 @@ label {
 
 h1 {
     font-family: "Segoe UI", "Open Sans", sans-serif, serif;
-    color: #348296;;
+    color: #348296;
+    margin-top: 0;
 }
 
 /* Button groups */
@@ -310,4 +320,20 @@ h1 {
     color:#348296;
 }
 
+#username{
+    width: 100%;
+}
 
+#password{
+    width: 100%;
+}
+#SLUlogo{
+    width:50%;
+    margin-left: 20%;
+}
+p{
+    text-align: center;
+}
+.containers{
+    margin-bottom: 5%;
+}

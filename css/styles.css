@@ -42,9 +42,7 @@ span.psw {
 }
 
 input[type=text], input[type=password] {
-    width: 70%;
-    -webkit-transition: width 0.8s ease-in-out;
-    transition: width 0.8s ease-in-out;
+    width: 80%;
     padding: 8px 20px;
     margin: 3% 0;
     display: inline-block;
