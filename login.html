@@ -22,7 +22,7 @@
 
     <img src="./img/logo.jpg" alt="Logo" class="logo">
     <div class=" login">
-                <form action="/action_page.php" class="login-wrapper">
+                <form action="" class="login-wrapper">
                 <h2>Log in</h2>
             <div class="username">
                 <br>
@@ -33,12 +33,12 @@
             <div class="password">
                 <label><strong>Password</strong></label>
                 <br>
-                <input id="password" type="password" name="uname" required> 
+                <input id="password" type="password" name="passwd" required> 
             </div>
            <div class="lgnbtns">
             <br>
             <br>
-             <button id="submit">Login</button>
+             <button id="submit" onclick="check(this.form)">Login</button>
            </div>
          
         </form>
@@ -46,5 +46,24 @@
     <div class="footer">
         <p> <strong> All Rights Reserved || 2017 ©</strong></p>
     </footer>
+        <script language="javascript">
+            function check(form) { /*function to check userid & password*/
+                /*the following code checkes whether the entered userid and password are matching*/
+                var users = {
+                    "user1" : "user1",
+                    "user2" : "user2",
+                    "user3" : "user3"
+                };
+                
+                // form.uname.value == form.passwd.value
+                if(users[form.uname.value] !== undefined && users[form.uname.value] === form.password.value){
+                    window.open('index.html')/*opens the target page while Id & password matches*/
+                }
+                else {
+                    alert("Error Password or Username")/*displays error message*/
+                    window.location.reload();
+                }
+            }
+        </script>
     </body>
 </html>
