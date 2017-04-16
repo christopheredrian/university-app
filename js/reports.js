@@ -17,7 +17,6 @@ Date.prototype.addDays = function (days) {
 if (document.getElementById('downloadBtn')) {
     var downloadBtn = document.getElementById('downloadBtn');
     downloadBtn.onclick = function (e) {
-        alert('not yet implemented');
         var startDate = new Date(localStorage.getItem('startDate'));
         var endDate = new Date(localStorage.getItem('endDate'));
         createReport(JSON.parse(localStorage.getItem('people')), startDate.getTime(), endDate.getTime(), 'reports.csv');
@@ -89,7 +88,6 @@ function createReport(people, startTime, endtime, fileName) {
             currentRow.push(encloseWithQuotation(endObj.toLocaleTimeString()));
             // rows += "\n";
             rows.push(currentRow);
-            alert(true);
         } else {
         }
         console.log('--------------------');

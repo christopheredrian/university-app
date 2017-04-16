@@ -43,7 +43,7 @@
          
         </form>
     </div>   
-    <div class="footer">
+    <footer class="footer">
         <p> <strong> All Rights Reserved || 2017 ©</strong></p>
     </footer>
         <script language="javascript">
@@ -55,6 +55,7 @@
                 };
                 
                 if(users[form.uname.value] !== undefined && users[form.uname.value] === form.password.value){
+                    localStorage.setItem('user', form.uname.value);
                     window.open('index.html')
                 }
                 else {
