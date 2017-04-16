@@ -20,7 +20,7 @@
         <a href="" id="exportBtn">Backup</a>
         <a href="" id="importBtn">Restore</a>
         <a href="reports.html" id="reportsBtn">Reports</a>
-        <a href="Login.html">Log Out</a>
+        <a href="Login.html" class="logout">Log Out</a>
     </nav>
 </header>
 <body onload="display_ct();">
@@ -61,8 +61,8 @@
 
             <div class="column column-4">
                 <h1>SLU Museum Logbook</h1>
-                <img src="./img/SLUlogo.jpg" alt="Logo" id="SLUlogo">
-                <p>
+                <img src="./img/SLUlogo.jpg" alt="Logo" id="SLUlogo" class="sm-hidden">
+                <p class="clock">
                     <span id='currentTime' class="sm-hidden"></span>
                 </p>
             </div>
