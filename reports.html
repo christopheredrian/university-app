@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html manifest="manifest.appcache" type="text/cache-manifest">
 <head>
-     <link rel="stylesheet" href="css/grid.css">
+    <link rel="stylesheet" href="css/grid.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/modal.css">
     <link rel="stylesheet" href="css/print.css">
@@ -10,6 +10,7 @@
 
 </head>
 <body>
+<input type='file' accept=".json" onchange='openFile(event)' style="display:none" id="fileChooser">
 <!-- The Modal -->
 <div id="myModal" class="modal">
 
@@ -154,5 +155,7 @@
 
 <script src="js/reports.js"></script>
 <script src="js/search.js"></script>
+<script src="js/export.js"></script>
+<script src="js/import.js"></script>
 </body>
 </html>

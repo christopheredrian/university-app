@@ -1,5 +1,5 @@
 /* Rows */
-.row, 
+.row,
 .column {
     box-sizing: border-box;
 }
@@ -18,6 +18,7 @@
     position: relative;
     float: left;
 }
+
 /* Gutters */
 .column + .column {
     margin-left: 1.6%;
@@ -73,7 +74,7 @@
     width: 100%;
 }
 
-.sm-show{
+.sm-show {
     display: none;
 }
 
@@ -100,15 +101,15 @@
         margin-left: 0;
     }
 
-    .sm-full-width{
+    .sm-full-width {
         width: 100% !important;
     }
 
-    .sm-hidden{
+    .sm-hidden {
         display: none;
     }
 
-    .sm-show{
+    .sm-show {
         display: inline;
     }
 }
