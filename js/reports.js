@@ -72,7 +72,9 @@ function createReport(people, startTime, endtime, fileName) {
     var rows = [];
     console.log(endtime);
     rows.push(["Name", "Id Number", "Category", "Date", "Start Time", "End Time"]);
+    endtime = new Date(endtime);
     endtime = endtime.addDays(1);
+    endtime = endtime.getTime();
     console.log(endtime);
     for (var id in people) {
         var currentRow = [];
@@ -83,9 +85,9 @@ function createReport(people, startTime, endtime, fileName) {
             currentRow.push(encloseWithQuotation(people[id]['name']));
             currentRow.push(encloseWithQuotation(people[id]['idNumber']));
             currentRow.push(encloseWithQuotation(people[id]['category']));
-            currentRow.push(encloseWithQuotation(endObj.getYear() + "-" + endObj.getMonth() + 1 + "-" + endObj.getDate()));
-            currentRow.push(encloseWithQuotation(startObj.getHours() + ":" + startObj.getMinutes() + ":" + startObj.getSeconds()));
-            currentRow.push(encloseWithQuotation(endObj.getHours() + ":" + endObj.getMinutes() + ":" + endObj.getSeconds()));
+            currentRow.push(encloseWithQuotation(endObj.toLocaleDateString()));
+            currentRow.push(encloseWithQuotation(startObj.toLocaleTimeString()));
+            currentRow.push(encloseWithQuotation(endObj.toLocaleTimeString()));
             // rows += "\n";
             rows.push(currentRow);
             alert(true);
