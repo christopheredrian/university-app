@@ -10,7 +10,7 @@
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
         <!-- Place favicon.ico in the root directory -->
 		<link rel="stylesheet" href="styles.css">
-        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/login.css">
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
     <body>
@@ -19,27 +19,27 @@
         <![endif]-->
 
         <!-- Add your site or application content here -->
-        <form action="/action_page.php">
-
-			<div class="imgcontainer">
-			<img src="logo.jpg" alt="Logo" class="logo">
-			</div>
-			
-            <div class="container">
-                    <label>Username :</label>
-                    <input type="text" placeholder="Enter Username" name="uname" required>
-                    <label>Password :</label>
-                    <input type="password" placeholder="Enter Username" name="uname" required>
-                    <button type="submit">Login</button>
-    <input type="checkbox" checked="checked"> Remember me
-
+    <img src="logo.jpg" alt="Logo" class="logo">
+    <div class=" login">
+        <form action="/action_page.php" class="login-wrapper">
+            <div class="username">
+                <label>Username :</label>
+                <input type="text" placeholder="Enter Username" name="uname" required>
             </div>
-			
-			<div class="container" style="background-color:#f1f1f1">
-    <button type="button" class="cancelbtn">Cancel</button>
-    <span class="psw">Forgot <a href="#">password?</a></span>
-  </div>
-
+            <div class="password">
+                <label>Password :</label>
+                <input type="password" placeholder="Enter Username" name="uname" required> 
+            </div>
+           <div class="lgnbtns">
+                <button type="submit">Login</button>
+                <span>Remember me</span> 
+                <input type="checkbox" checked="checked"> 
+                <button type="button" class="cancelbtn">Cancel</button>
+                <span class="psw">Forgot <a href="#">password?</a></span>
+           </div>
+         
         </form>
+    </div>   
+        
     </body>
 </html>
