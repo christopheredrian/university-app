@@ -152,13 +152,11 @@ var ApplicationController = {
         PersonStorage.create(fullNameVal, idNumberVal, categoryVal, startTimeVal);
     },
     removePerson: function () {
-        alert('Removing' + this.getAttribute('data-id'));
         PersonStorage.delete(this.getAttribute('data-id'));
         ApplicationView.removePerson(this.getAttribute('data-id'));
     },
     signOut: function () {
         var id = this.getAttribute('data-id');
-        alert('Signing out ' + this.getAttribute('data-id'));
         ApplicationView.removePerson(id);
         ApplicationView.signOut(PersonStorage.people[id]);
         PersonStorage.signOut(this);
@@ -210,7 +208,6 @@ function drop(ev) {
     // ev.target.appendChild(document.getElementById(data));
     var element = document.getElementById(data);
     var signOutBtn = element.querySelector('.signOutBtn');
-    alert(signOutBtn);
     signOutBtn.click();
 }
 

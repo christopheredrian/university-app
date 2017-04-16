@@ -210,7 +210,7 @@ function viewReport(people, tableElement) {
     var lastend = 0;
     var data = [visitorCounter, facultyCounter, studentCounter]; // data counters here
     var myTotal = 0;
-    var myColor = ['#e3f2fd', 'red', 'green']; // Colors of each slice
+    var myColor = ['#e3f2fd', '#ff5252', '#00e676']; // Colors of each slice
 
     for (var e = 0; e < data.length; e++) {
         myTotal += data[e];

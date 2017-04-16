@@ -18,9 +18,10 @@ th {
 }
 
 #reportsTable {
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-family: "Segoe UI", "Open Sans", sans-serif, serif;
     border-collapse: collapse;
     width: 100%;
+
 }
 
 #reportsTable td, #reportsTable th {
@@ -37,7 +38,7 @@ th {
     padding-bottom: 12px;
     text-align: left;
     background-color: #e3f2fd;
-    color: black;
+    color:#348296;
 }
 
 .page-header {
@@ -66,7 +67,7 @@ td.faculty-legend {
 }
 
 td.students-legend {
-    background-color: #4caf50;
+    background-color: #00e676;
 }
 
 td.visitors-legend {
