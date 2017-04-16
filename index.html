@@ -14,9 +14,9 @@
 <header>
     <nav>
         <a class="active" href="index.html">Home</a>
-        <a class="sm-show" href="#form">Form</a>
-        <a class="sm-show" href="#Inside">Inside</a>
-        <a class="sm-show" href="#Outside">Outside</a>
+        <a class="sm-show" href="#mainform">Form</a>
+        <a class="sm-show" href="#insideLists">Inside</a>
+        <a class="sm-show" href="#outsideLists">Outside</a>
         <a href="" id="exportBtn">Backup</a>
         <a href="" id="importBtn">Restore</a>
         <a href="reports.html" id="reportsBtn">Reports</a>
@@ -57,7 +57,7 @@
         <!--</nav>-->
         <!--</header>-->
 
-        <div class="row full-height">
+        <div class="row full-height" id="mainform">
 
             <div class="column column-4">
                 <h1>SLU Museum Logbook</h1>
@@ -86,9 +86,10 @@
                     </form>
                 </div>
             </div>
+                    <div id="insideLists"></div>
         </div>
 
-        <div class="row containers">
+        <div class="row containers" >
             <!--<div class="btn-group">-->
             <!--<button id="allBtn">All</button>-->
             <!--<button id="dayBtn">day</button>-->
@@ -97,7 +98,7 @@
             <!--<button id="yearbtn">year</button>-->
             <!--</div>-->
 
-            <div class="column column-6">
+            <div class="column column-6" >
                 <h2>Inside</h2>
                 <label>Search: </label>
                 <input type="search" onkeyup="searchDiv('insideList', this.value); " placeholder="Search">
@@ -106,7 +107,7 @@
                 </div>
 
             </div>
-            <div class="column column-6">
+            <div class="column column-6" id="outsideLists">
                 <h2>Signed Out</h2>
                 <label>Search: </label>
                 <input type="search" onkeyup="searchDiv('outsideList', this.value); " placeholder="Search">
