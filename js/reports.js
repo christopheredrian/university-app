@@ -16,7 +16,7 @@ if (document.getElementById('downloadBtn')) {
         print();
     }
 
-    document.getElementById('generateBtn').onclick = function(){
+    document.getElementById('generateBtn').onclick = function () {
         document.getElementById('reportsBtn').click();
     }
     viewReport(localStorage.getItem('people'), document.getElementById('reportsTable'));
@@ -161,9 +161,14 @@ function viewReport(people, tableElement) {
             var endObj = new Date(current.endTime);
             var row = document.createElement('tr');
 
+            temp = document.createElement('td');
+            temp.innerHTML = peopleCounter;
+            row.appendChild(temp);
+
             var temp = document.createElement('td');
             temp.innerHTML = current['name'];
             row.appendChild(temp);
+
             temp = document.createElement('td');
             temp.innerHTML = current['idNumber'];
             row.appendChild(temp);
@@ -171,10 +176,13 @@ function viewReport(people, tableElement) {
             temp.innerHTML = current['category'];
             row.appendChild(temp);
             temp = document.createElement('td');
-            temp.innerHTML = startObj;
+            temp.innerHTML = startObj.toDateString();
             row.appendChild(temp);
             temp = document.createElement('td');
-            temp.innerHTML = endObj;
+            temp.innerHTML = startObj.toLocaleTimeString();
+            row.appendChild(temp);
+            temp = document.createElement('td');
+            temp.innerHTML = endObj.toLocaleTimeString();
             row.appendChild(temp);
             tableElement.appendChild(row);
         } else {
@@ -189,14 +197,13 @@ function viewReport(people, tableElement) {
     var canvas = document.getElementById("can");
     var ctx = canvas.getContext("2d");
     var lastend = 0;
-    var data = [visitorCounter, facultyCounter, studentCounter]; // If you add more data values make sure you add more colors
-    var myTotal = 0; // Automatically calculated so don't touch
-    var myColor = ['red', 'green', 'blue']; // Colors of each slice
+    var data = [visitorCounter, facultyCounter, studentCounter]; // data counters here
+    var myTotal = 0;
+    var myColor = ['#e3f2fd', 'red', 'green']; // Colors of each slice
 
     for (var e = 0; e < data.length; e++) {
         myTotal += data[e];
     }
-
     for (var i = 0; i < data.length; i++) {
         ctx.fillStyle = myColor[i];
         ctx.beginPath();
@@ -221,47 +228,49 @@ function sortTable(n) {
     switching = true;
     //Set the sorting direction to ascending:
     dir = "asc";
-    /*Make a loop that will continue until
-     no switching has been done:*/
     while (switching) {
-        //start by saying: no switching is done:
         switching = false;
-        rows = table.getElementsByTagName("TR");
-        /*Loop through all table rows (except the
-         first, which contains table headers):*/
+        rows = table.getElementsByTagName("tr");
+
         for (i = 1; i < (rows.length - 1); i++) {
-            //start by saying there should be no switching:
             shouldSwitch = false;
-            /*Get the two elements you want to compare,
-             one from current row and one from the next:*/
             x = rows[i].getElementsByTagName("TD")[n];
             y = rows[i + 1].getElementsByTagName("TD")[n];
-            /*check if the two rows should switch place,
-             based on the direction, asc or desc:*/
-            if (dir == "asc") {
-                if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-                    //if so, mark as a switch and break the loop:
-                    shouldSwitch = true;
-                    break;
+            // it is not a number
+
+            if (isNaN(x.innerHTML) || isNaN(y.innerHTML)) {
+                if (dir == "asc") {
+                    if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                        shouldSwitch = true;
+                        break;
+                    }
+                } else if (dir == "desc") {
+                    if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                        shouldSwitch = true;
+                        break;
+                    }
                 }
-            } else if (dir == "desc") {
-                if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-                    //if so, mark as a switch and break the loop:
-                    shouldSwitch = true;
-                    break;
+            } else {
+                console.log(x.innerHTML + ":" + y.innerHTML);
+
+                if (dir == "asc") {
+                    if (parseInt(x.innerHTML) > parseInt(y.innerHTML)) {
+                        shouldSwitch = true;
+                        break;
+                    }
+                } else if (dir == "desc") {
+                    if (parseInt(x.innerHTML) < parseInt(y.innerHTML)) {
+                        shouldSwitch = true;
+                        break;
+                    }
                 }
             }
         }
         if (shouldSwitch) {
-            /*If a switch has been marked, make the switch
-             and mark that a switch has been done:*/
             rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
             switching = true;
-            //Each time a switch is done, increase this count by 1:
             switchcount++;
         } else {
-            /*If no switching has been done AND the direction is "asc",
-             set the direction to "desc" and run the while loop again.*/
             if (switchcount == 0 && dir == "asc") {
                 dir = "desc";
                 switching = true;

@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="css/modal.css">
     <link rel="stylesheet" href="css/print.css">
     <link rel="stylesheet" href="css/reports.css">
+    <meta name="viewport" content="initial-scale=1.0">
+
 </head>
 <body>
 <!-- The Modal -->
@@ -32,15 +34,13 @@
 </div>
 <header class="print-hide">
     <nav>
-        <ul>
-            <li><a class="active" href="index.html">Home</a></li>
-            <li><a href="#form">Form</a></li>
-            <li><a href="#Inside">Inside</a></li>
-            <li><a href="#Outside">Outside</a></li>
-            <li><a href="#Backup">Backup</a></li>
-            <li><a href="#Restore">Restore</a></li>
-            <li><a href="reports.html" id="reportsBtn">Reports</a></li>
-        </ul>
+        <a class="active" href="index.html">Home</a>
+        <a href="#form">Form</a>
+        <a href="#Inside">Inside</a>
+        <a href="#Outside">Outside</a>
+        <a href="" id="exportBtn">Backup</a>
+        <a href="" id="importBtn">Restore</a>
+        <a href="reports.html" id="reportsBtn">Reports</a>
     </nav>
 </header>
 <div class="container">
@@ -92,14 +92,58 @@
     </div>
     <div class="row" style="overflow: auto">
         <h2 class="page-header">Report</h2>
-        <label>Search: </label> <input type="search" onkeyup="searchTable('reportsTable', this.value); " placeholder="Search"><br><br>
+        <label>Search: </label> <input type="search" onkeyup="searchTable('reportsTable', this.value); "
+                                       placeholder="Search"><br><br>
         <table id="reportsTable">
             <tr>
-                <th onclick="sortTable(0)">Name</th>
-                <th onclick="sortTable(1)">Id Number</th>
-                <th onclick="sortTable(2)">Category</th>
-                <th onclick="sortTable(3)">Start Time</th>
-                <th onclick="sortTable(4)">End Time</th>
+                <th onclick="sortTable(0)">Id
+                    <div class="icons">
+                        <img src="img/up.png" alt="up arrow" class="icon">
+                        <img src="img/down.png" alt="up arrow" class="icon">
+                    </div>
+                </th>
+                <th onclick="sortTable(1)">
+                    Name
+                    <div class="icons">
+                        <img src="img/up.png" alt="up arrow" class="icon">
+                        <img src="img/down.png" alt="up arrow" class="icon">
+                    </div>
+                </th>
+                <th onclick="sortTable(2)">
+                    Id Number
+                    <div class="icons">
+                        <img src="img/up.png" alt="up arrow" class="icon">
+                        <img src="img/down.png" alt="up arrow" class="icon">
+                    </div>
+                </th>
+                <th onclick="sortTable(3)">
+                    Category
+                    <div class="icons">
+                        <img src="img/up.png" alt="up arrow" class="icon">
+                        <img src="img/down.png" alt="up arrow" class="icon">
+                    </div>
+                </th>
+                <th onclick="sortTable(4)">
+                    Date
+                    <div class="icons">
+                        <img src="img/up.png" alt="up arrow" class="icon">
+                        <img src="img/down.png" alt="up arrow" class="icon">
+                    </div>
+                </th>
+                <th onclick="sortTable(5)">
+                    Start Time
+                    <div class="icons">
+                        <img src="img/up.png" alt="up arrow" class="icon">
+                        <img src="img/down.png" alt="up arrow" class="icon">
+                    </div>
+                </th>
+                <th onclick="sortTable(6)">
+                    End Time
+                    <div class="icons">
+                        <img src="img/up.png" alt="up arrow" class="icon">
+                        <img src="img/down.png" alt="up arrow" class="icon">
+                    </div>
+                </th>
             </tr>
 
         </table>

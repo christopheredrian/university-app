@@ -66,7 +66,7 @@ var ApplicationView = {
         clone.querySelector('#templateDiv span.name').innerText = fullName;
         clone.querySelector('#templateDiv span.idNumber').innerText = idNumber;
         clone.querySelector('#templateDiv span.category').innerText = category;
-        clone.querySelector('#templateDiv span.dateStart').innerText = startTime;
+        clone.querySelector('#templateDiv span.dateStart').innerText = startTime.toLocaleString();
         clone.querySelector('#templateDiv .deleteBtn').setAttribute('data-id', startTime.getTime());
         clone.querySelector('#templateDiv .deleteBtn').onclick = ApplicationController.removePerson;
         clone.querySelector('#templateDiv .signOutBtn').setAttribute('data-id', startTime.getTime());
@@ -103,8 +103,8 @@ var ApplicationView = {
         clone.querySelector('span.name').innerText = currentPerson.name;
         clone.querySelector('span.idNumber').innerText = currentPerson.idNumber;
         clone.querySelector('span.category').innerText = currentPerson.category;
-        clone.querySelector('span.dateStart').innerText = startTime;
-        clone.querySelector('span.dateEnd').innerText = endTime;
+        clone.querySelector('span.dateStart').innerText = startTime.toLocaleString();
+        clone.querySelector('span.dateEnd').innerText = endTime.toLocaleString();
         clone.querySelector('.deleteBtn').setAttribute('data-id', startTime.getTime());
         clone.querySelector('.deleteBtn').onclick = ApplicationController.removePerson;
         outsideListDiv.appendChild(clone);
@@ -228,6 +228,7 @@ function display_c() {
 function display_ct() {
     var strcount
     var x = new Date()
-    document.getElementById('currentTime').innerHTML = x;
+    // document.getElementById('currentTime').innerHTML = x;
+    document.getElementById('currentTime').innerHTML = x.toDateString() + "<br>" + x.toLocaleTimeString();
     tt = display_c();
 }

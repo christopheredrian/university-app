@@ -75,7 +75,7 @@
 
 /* Media queries for columns */
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 500px) {
     .column-1,
     .column-2,
     .column-3,
@@ -88,11 +88,19 @@
     .column-10,
     .column-11,
     .column-12 {
-        width: auto;
+        width: 100%;
         float: none;
     }
 
     .column + .column {
         margin-left: 0;
+    }
+
+    .sm-full-width{
+        width: 100% !important;
+    }
+
+    .sm-hidden{
+        display: none;
     }
 }

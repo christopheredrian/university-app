@@ -1,6 +1,7 @@
-body{
+body {
     margin: 10% 0;
 }
+
 table, th, td {
     border: 1px solid black;
     border-collapse: collapse;
@@ -27,7 +28,6 @@ th {
     padding: 8px;
 }
 
-
 #reportsTable tr:hover {
     background-color: #ddd;
 }
@@ -52,9 +52,11 @@ table#statistics td, table#statistics th, table#statistics {
 table#statistics {
     margin-bottom: 5%;
 }
-table#statistics th{
+
+table#statistics th {
     text-align: left;
 }
+
 td[class$=legend] {
     width: 50px;
 }
@@ -71,6 +73,19 @@ td.visitors-legend {
     background-color: #e3f2fd;
 }
 
-.chart{
+th{
+    min-width: 25px;
+}
+
+.chart {
     text-align: center;
+}
+
+img.icon {
+    width: 10px;
+}
+
+div.icons {
+    width: 100%;
+    display: block;
 }
